@@ -3,31 +3,26 @@
 @tailwind utilities;
 
 @layer base {
-  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
-  body { @apply bg-white font-sans text-ink antialiased; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 104px; }
+  body { @apply bg-alabaster font-sans text-ink antialiased; }
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
-  :focus-visible { outline: 2px solid #0F4C81; outline-offset: 3px; border-radius: 8px; }
+  ::selection { background: #0B1220; color: #FAF9F6; }
+  :focus-visible { outline: 2px solid #0EA5E9; outline-offset: 3px; border-radius: 6px; }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; animation: none !important; }
-  }
 }
 
 @layer components {
-  .section { @apply mx-auto max-w-7xl px-6 py-24; }
-  .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.18em] text-green-ssf; }
-  .h2 { @apply text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] text-navy sm:text-5xl; }
-  .card { @apply rounded-3xl border border-slate-200/80 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift; }
-  /* For Framer Motion cards: shadow only, the lift comes from whileHover. */
-  .card-motion { @apply rounded-3xl border border-slate-200/80 bg-white shadow-soft transition-shadow duration-300 hover:shadow-lift; }
-  .pill { @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold; }
-  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-all duration-200; }
-  .btn-primary { @apply btn bg-blue-ssf text-white shadow-[0_10px_24px_rgb(15_76_129/0.22)] hover:-translate-y-0.5 hover:bg-blue-deep; }
-  .btn-secondary { @apply btn border border-slate-200 bg-white text-navy hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-soft; }
-  .glow { @apply pointer-events-none absolute rounded-full blur-3xl; }
+  .frame { @apply mx-auto w-full max-w-frame px-6 sm:px-10; }
+  .hair { @apply border-black/[0.06]; }
+  .idx { @apply font-mono text-[11px] font-medium tabular-nums text-ink-muted; }
+  .h-section { @apply text-[2.6rem] font-bold leading-[0.98] tracking-[-0.04em] sm:text-6xl; }
+  /* Signature 3px tri-colour bar: SSF flag colours. */
+  .tricolor { height: 3px; background: linear-gradient(90deg, #0EA5E9 0 33.333%, #FFFFFF 33.333% 66.666%, #10B981 66.666%); }
+  .tricolor-light { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.06); }
 }
 
-@keyframes ping-soft { 75%, 100% { transform: scale(2.2); opacity: 0; } }
+@keyframes ping-soft { 75%, 100% { transform: scale(2.4); opacity: 0; } }
 .dot-live { position: relative; }
-.dot-live::after { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: inherit; animation: ping-soft 1.6s cubic-bezier(0, 0, 0.2, 1) infinite; }
+.dot-live::after { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: inherit; animation: ping-soft 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@media (prefers-reduced-motion: reduce) { .dot-live::after { animation: none; } }

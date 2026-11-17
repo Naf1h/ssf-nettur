@@ -1,25 +1,21 @@
-/** Design tokens: bright, airy SSF Nettur system. */
+/** Precision minimalism: SSF Nettur design tokens. */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        navy: '#102D4A',
-        blue: { ssf: '#0F4C81', deep: '#0C3B66' },
-        emerald: { ssf: '#10B981' },
-        green: { ssf: '#16A34A' },
-        ink: { DEFAULT: '#172B3A', muted: '#55657A' },
-        alabaster: '#F8FAFC',
+        alabaster: '#FAF9F6',
+        obsidian: '#090D16',
+        ink: { DEFAULT: '#0B1220', muted: '#5B6472' },
+        flag: { blue: '#0EA5E9', green: '#10B981' },
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Inter Tight"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
-      boxShadow: {
-        soft: '0 8px 30px rgb(0 0 0 / 0.04)',
-        lift: '0 20px 40px rgb(15 76 129 / 0.08)',
-      },
-      zIndex: { header: '40', menu: '50', skip: '60' },
+      maxWidth: { frame: '1320px' },
+      zIndex: { dock: '50', skip: '60' },
     },
   },
   plugins: [],

@@ -1,10 +1,9 @@
 import Hero from '../sections/Hero.jsx';
-import Overview from '../sections/Overview.jsx';
-import Work from '../sections/Work.jsx';
-import Events from '../sections/Events.jsx';
-import Values from '../sections/Values.jsx';
-import Leadership from '../sections/Leadership.jsx';
-import Contact from '../sections/Contact.jsx';
+import Lineage from '../sections/Lineage.jsx';
+import Pulse from '../sections/Pulse.jsx';
+import Wings from '../sections/Wings.jsx';
+import People from '../sections/People.jsx';
+import Write from '../sections/Write.jsx';
 import usePageTitle from '../components/usePageTitle.js';
 
 export default function Home() {
@@ -12,12 +11,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Overview />
-      <Work />
-      <Events />
-      <Values />
-      <Leadership />
-      <Contact />
+      <Lineage />
+      <Pulse />
+      <Wings />
+      <People />
+      <Write />
     </>
   );
 }
