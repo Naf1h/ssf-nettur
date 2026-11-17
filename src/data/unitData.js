@@ -5,18 +5,19 @@
 // Script rule: English UI and summaries; Malayalam only in titleMl.
 // ============================================================
 
-// 1. EXECUTIVE COMMITTEE: copy names from the latest @ssf_nettur committee post.
+// 1. EXECUTIVE COMMITTEE: from the @ssf_nettur office bearers post.
+// The three main office bearers are shown with photos (save them in public/team/).
 export const committee = [
-  { role: 'President', duty: 'Leads the unit and chairs its meetings.', name: '', photo: '' },
-  { role: 'General Secretary', duty: 'Runs unit activities and keeps its records.', name: '', photo: '' },
-  { role: 'Finance Secretary', duty: 'Keeps the unit accounts and membership dues.', name: '', photo: '' },
+  { role: 'President', name: '', photo: '' },
+  { role: 'General Secretary', name: '', photo: '' },
+  { role: 'Executive Secretary', name: '', photo: '' },
 ];
+// Everyone else on the committee: names only, e.g. { role: 'Secretary', name: 'Full Name' }
+export const secretariat = [];
 // Term of the current office bearers, as on the announcement post.
 export const committeeTerm = '2027-28';
 // Instagram post announcing the current office bearers.
 export const committeePost = 'https://www.instagram.com/p/DeqdfUHpozV/';
-// Secretariat members and wing convenors, e.g. { role: 'Convenor, WEFI', name: 'Full Name' }
-export const secretariat = [];
 
 // 2. EVENTS: dated events with their poster. Copied exactly from the posters.
 // tier: 'unit' (green badge) or 'sector' (blue badge). Past dates move to the archive on their own.

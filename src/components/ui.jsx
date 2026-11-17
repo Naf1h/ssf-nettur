@@ -250,7 +250,7 @@ export function CommitteeGrid() {
             <div className="flex flex-1 flex-col gap-2 border-t border-line p-6">
               <p className="tag text-brand-blue">{m.role}</p>
               {m.name && <p className="font-head text-xl font-bold tracking-[-0.01em]">{m.name}</p>}
-              <p className="text-sm text-ink-muted">{m.duty}</p>
+              {m.duty && <p className="text-sm text-ink-muted">{m.duty}</p>}
             </div>
           </li>
         ))}
