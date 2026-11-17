@@ -3,6 +3,7 @@ import { posters, social } from '../data/unitData.js';
 import { PageIntro, SectionHead, PosterGrid, JoinBand } from '../components/ui.jsx';
 import InstagramFeed from '../components/InstagramFeed.jsx';
 import usePageTitle from '../components/usePageTitle.js';
+import EventCards, { upcomingEvents, pastEvents } from '../components/EventCards.jsx';
 
 const order = { UPCOMING: 0, ONGOING: 1, RECURRING: 2, COMPLETED: 3 };
 
@@ -10,7 +11,11 @@ export default function Programmes() {
   usePageTitle('Programmes & Archive');
   const sorted = [...posters].sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9));
   const current = sorted.filter((p) => p.status !== 'COMPLETED');
-  const archive = sorted.filter((p) => p.status === 'COMPLETED').sort((a, b) => new Date(b.date) - new Date(a.date));
+  const pastAsPosters = pastEvents().map((e) => ({
+    id: e.id, tag: e.badge, titleMl: e.titleMl || e.title, status: 'COMPLETED', date: e.date, image: e.image, url: e.url,
+  }));
+  const archive = [...pastAsPosters, ...sorted.filter((p) => p.status === 'COMPLETED')].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const hasUpcoming = upcomingEvents().length > 0;
 
   return (
     <>
@@ -19,8 +24,17 @@ export default function Programmes() {
         <a className="btn-ghost-dark self-start" href={social.instagram.url} target="_blank" rel="noopener"><Instagram className="size-4" aria-hidden="true" />{social.instagram.handle}</a>
       </PageIntro>
 
-      <section aria-labelledby="now-title" className="page py-16 md:py-24">
-        <SectionHead tag="01 // CURRENT & RECURRING" title="Unit programmes" id="now-title">
+      {hasUpcoming && (
+        <section id="events" aria-labelledby="events-title" className="page py-16 md:py-24">
+          <SectionHead tag="01 // UPCOMING EVENTS" title="Upcoming events" id="events-title">
+            <p>Tap a poster to see it in full.</p>
+          </SectionHead>
+          <div className="mt-10"><EventCards /></div>
+        </section>
+      )}
+
+      <section aria-labelledby="now-title" className={`page py-16 md:py-24 ${hasUpcoming ? 'border-t border-line' : ''}`}>
+        <SectionHead tag={`${hasUpcoming ? '02' : '01'} // CURRENT & RECURRING`} title="Unit programmes" id="now-title">
           <p>Posters link to the matching post on {social.instagram.handle}.</p>
         </SectionHead>
         <div className="mt-10"><PosterGrid items={current} /></div>
@@ -29,7 +43,7 @@ export default function Programmes() {
       {archive.length > 0 && (
         <section aria-labelledby="archive-title" className="border-t border-line bg-alt py-16 md:py-24">
           <div className="page">
-            <SectionHead tag="02 // ARCHIVE" title="Completed programmes" id="archive-title" />
+            <SectionHead tag="ARCHIVE // COMPLETED" title="Completed programmes" id="archive-title" />
             <div className="mt-10"><PosterGrid items={archive} /></div>
           </div>
         </section>

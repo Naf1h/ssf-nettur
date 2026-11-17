@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { unit } from '../data/unitData.js';
 import { SectionHead, HierarchyStrip, StatsGrid, FeaturedPosters, DepartmentBento, JoinBand } from '../components/ui.jsx';
 import usePageTitle from '../components/usePageTitle.js';
+import EventCards, { upcomingEvents } from '../components/EventCards.jsx';
 
 function Hero() {
   return (
@@ -46,7 +47,15 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <section aria-labelledby="stats-title" className="page py-16 md:py-24">
+      {upcomingEvents().length > 0 && (
+        <section id="events" aria-labelledby="events-title" className="page py-16 md:py-24">
+          <SectionHead tag="UPCOMING // EVENTS" title="Upcoming events" id="events-title">
+            <Link to="/programmes" className="btn-line">All programmes<ArrowRight className="size-4" aria-hidden="true" /></Link>
+          </SectionHead>
+          <div className="mt-10"><EventCards /></div>
+        </section>
+      )}
+      <section aria-labelledby="stats-title" className="page border-t border-line py-16 md:py-24">
         <h2 id="stats-title" className="tag mb-6 text-brand-blue">SSF // IN NUMBERS</h2>
         <StatsGrid />
       </section>

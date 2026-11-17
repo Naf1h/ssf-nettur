@@ -14,7 +14,43 @@ export const committee = [
 // Secretariat members and wing convenors, e.g. { role: 'Convenor, WEFI', name: 'Full Name' }
 export const secretariat = [];
 
-// 2. POSTERS: programmes, campaigns and the archive.
+// 2. EVENTS: dated events with their poster. Copied exactly from the posters.
+// tier: 'unit' (green badge) or 'sector' (blue badge). Past dates move to the archive on their own.
+// image: poster in public/posters/. url: the Instagram post link (empty links to the profile).
+export const events = [
+  {
+    id: 'bafaqi-anusmarana-2026',
+    tier: 'unit',
+    badge: 'UNIT EVENT // SSF NETTUR',
+    titleMl: 'അമീനുശ്ശരീഅ സയ്യിദ് അലി ബാഫഖി തങ്ങൾ അനുസ്മരണ സംഗമം',
+    title: '',
+    summary: 'Memorial gathering for Ameenu Shareea Sayyid Ali Bafaqi Thangal.',
+    organizer: 'Organized by SSF Nettur Unit',
+    date: '2026-11-18',
+    day: 'Wednesday',
+    time: '6:30 PM',
+    venue: 'Thwaiba Garden, Nettur',
+    image: '/posters/2026-11-18-bafaqi-anusmarana-sangamam.webp',
+    url: '',
+  },
+  {
+    id: 'dharmadam-students-council-2026',
+    tier: 'sector',
+    badge: 'SECTOR COUNCIL // DHARMADAM SECTOR',
+    titleMl: '',
+    title: 'Students Council',
+    summary: 'Students Council of SSF Dharmadam Sector.',
+    organizer: 'Organized by SSF Dharmadam Sector Committee',
+    date: '2026-11-22',
+    day: 'Sunday',
+    time: '2:30 PM',
+    venue: 'Ozhayil Bhagam',
+    image: '/posters/2026-11-22-dharmadam-students-council.webp',
+    url: '',
+  },
+];
+
+// 3. POSTERS: programmes, campaigns and the archive.
 // status: 'UPCOMING' | 'ONGOING' | 'COMPLETED' | 'RECURRING'
 // image: a 4:5 Instagram poster saved in public/posters/, e.g. '/posters/sahityotsav-2026.webp'
 // url: the Instagram post link. date: 'YYYY-MM-DD' when the programme has one.
@@ -63,7 +99,7 @@ export const posters = [
   },
 ];
 
-// 3. DEPARTMENTS (modeled on nationalssf.org's departments)
+// 4. DEPARTMENTS (modeled on nationalssf.org's departments)
 export const departments = [
   { id: 'campus', tag: 'CAMPUS // HIGHER EDUCATION', titleMl: 'ക്യാമ്പസ്', title: 'Campus', summary: "Support for Nettur students in colleges and universities, linked to SSF's higher education department.", icon: 'Building2' },
   { id: 'wefi', tag: 'WEFI // EDUCATION & CAREER', titleMl: 'വെഫി', title: 'WEFI Education & Career', summary: "Course, entrance exam and admission guidance through WEFI, SSF's education department.", icon: 'GraduationCap' },
@@ -73,12 +109,14 @@ export const departments = [
   { id: 'service', tag: 'SERVICE // COMMUNITY', titleMl: 'സേവനം', title: 'Social Service', summary: 'A student help desk and service work for families in Nettur.', icon: 'HandHeart' },
 ];
 
-// 4. UNIT FACTS
+// 5. UNIT FACTS
 export const unit = {
   name: 'SSF Nettur Unit',
   nameMl: 'എസ് എസ് എഫ് നെട്ടൂർ യൂണിറ്റ്',
   federation: "Sunni Students' Federation",
   place: 'Nettur, Thalassery, Kannur, Kerala',
+  address: 'Thwaiba Garden, Nettur, Thalassery, Kannur Dt, 670105',
+  email: 'ssfnettur121@gmail.com',
   intro: "SSF Nettur is the Sunni Students' Federation unit for the students of Nettur, Thalassery. It brings students together for study, culture, career guidance and service, as part of Dharmadam Sector, Thalassery Division and Kannur District.",
   campaignMl: 'ജീവിതമാവുക',
   campaign: '2026 SSF Kerala membership campaign',
@@ -105,7 +143,7 @@ export const stats = {
   ],
 };
 
-// 5. CONTACT
+// 6. CONTACT
 export const social = {
   instagram: { handle: '@ssf_nettur', url: 'https://www.instagram.com/ssf_nettur' },
   facebook: { handle: 'ssfnettur', url: 'https://www.facebook.com/ssfnettur' },

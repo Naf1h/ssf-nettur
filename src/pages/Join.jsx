@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Instagram, Facebook, MessageCircle, ArrowUpRight, Check } from 'lucide-react';
-import { social, formspreeId, formPurposes } from '../data/unitData.js';
+import { Instagram, Facebook, MessageCircle, ArrowUpRight, Check, Mail, MapPin } from 'lucide-react';
+import { social, formspreeId, formPurposes, unit } from '../data/unitData.js';
 import { PageIntro } from '../components/ui.jsx';
 import usePageTitle from '../components/usePageTitle.js';
 
@@ -80,6 +80,8 @@ export default function Join() {
     social.whatsapp && { icon: MessageCircle, label: 'WhatsApp', value: 'Chat with the unit', href: `https://wa.me/${social.whatsapp}`, primary: true },
     { icon: Instagram, label: 'Instagram', value: social.instagram.handle, href: social.instagram.url },
     { icon: Facebook, label: 'Facebook', value: `facebook.com/${social.facebook.handle}`, href: social.facebook.url },
+    unit.email && { icon: Mail, label: 'Email', value: unit.email, href: `mailto:${unit.email}` },
+    unit.address && { icon: MapPin, label: 'Unit address', value: unit.address },
   ].filter(Boolean);
 
   return (
@@ -94,14 +96,24 @@ export default function Join() {
           <ul className="mt-8 border-t border-line">
             {channels.map(({ icon: Icon, label, value, href, primary }) => (
               <li key={label} className="border-b border-line">
-                <a href={href} target="_blank" rel="noopener" className={`group grid grid-cols-[28px_1fr_auto] items-center gap-4 py-5 ${primary ? 'text-brand-green' : ''}`}>
-                  <Icon className="size-6" aria-hidden="true" />
-                  <span className="min-w-0">
-                    <span className="tag block text-ink-muted">{label}</span>
-                    <span className="block break-words font-head text-lg font-bold text-ink">{value}</span>
-                  </span>
-                  <ArrowUpRight className="size-5 text-ink-muted transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
-                </a>
+                {href ? (
+                  <a href={href} target={href.startsWith('mailto:') ? undefined : '_blank'} rel="noopener" className={`group grid grid-cols-[28px_1fr_auto] items-center gap-4 py-5 ${primary ? 'text-brand-green' : ''}`}>
+                    <Icon className="size-6" aria-hidden="true" />
+                    <span className="min-w-0">
+                      <span className="tag block text-ink-muted">{label}</span>
+                      <span className="block break-words font-head text-lg font-bold text-ink">{value}</span>
+                    </span>
+                    <ArrowUpRight className="size-5 text-ink-muted transition-transform duration-150 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <div className="grid grid-cols-[28px_1fr] items-center gap-4 py-5">
+                    <Icon className="size-6" aria-hidden="true" />
+                    <span className="min-w-0">
+                      <span className="tag block text-ink-muted">{label}</span>
+                      <span className="block break-words font-head text-lg font-bold text-ink">{value}</span>
+                    </span>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
