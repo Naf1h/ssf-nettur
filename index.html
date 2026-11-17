@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SSF Nettur Unit</title>
+<meta name="description" content="എസ് എസ് എഫ് നെട്ടൂർ യൂണിറ്റ്. SSF Nettur Unit, Dharmadam Sector, Thalassery Division, Kannur District.">
+<meta property="og:title" content="SSF Nettur Unit">
+<meta property="og:description" content="എസ് എസ് എഫ് നെട്ടൂർ യൂണിറ്റ് · ധർമ്മടം സെക്ടർ · തലശ്ശേരി ഡിവിഷൻ · കണ്ണൂർ ജില്ല">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="assets/ssf-emblem.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600&display=swap">
+<link rel="preload" href="assets/rachana-bold.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"SSF Nettur Unit","alternateName":"എസ് എസ് എഫ് നെട്ടൂർ യൂണിറ്റ്","address":{"@type":"PostalAddress","addressLocality":"Nettur, Thalassery","addressRegion":"Kerala","addressCountry":"IN"},"parentOrganization":{"@type":"Organization","name":"SSF Kerala","url":"https://ssfkerala.org/"},"sameAs":["https://www.instagram.com/ssf_nettur","https://www.facebook.com/share/19qNzpWRzc/"]}
+</script>
+<style>
+/* Follows ssfkerala.org: monochrome page, colour only from the campaign art and photos.
+   Type: Manrope (headings, body) · Sora (nav, buttons, meta) · RIT Rachana (Malayalam) · Cooper Black outlines for "SSF".
+   Layout: layered campaign hero, then left-aligned sections on a 1080px column; charcoal band for the work areas; charcoal footer. */
+@font-face{font-family:"RIT Rachana";src:url(assets/rachana-regular.woff2) format("woff2");font-weight:400 600;font-display:swap;unicode-range:U+0D00-0D7F,U+200C-200D,U+25CC}
+@font-face{font-family:"RIT Rachana";src:url(assets/rachana-bold.woff2) format("woff2");font-weight:700 900;font-display:swap;unicode-range:U+0D00-0D7F,U+200C-200D,U+25CC}
+:root{
+  color-scheme:light;
+  --ink:#000000; --text:#444444; --muted:#7d7d7d; --line:#e4e4e4;
+  --card:#f3f3f3; --bg:#ffffff; --dark:#1e1e1e; --foot:#2a2a2a; --sky:#e3eaf1;
+  --sans:"RIT Rachana","Manrope",system-ui,sans-serif;
+  --ui:"RIT Rachana","Sora","Manrope",system-ui,sans-serif;
+  --ml:"RIT Rachana","Manrope",serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--bg)}
+body{color:var(--ink);font:16px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+p{text-wrap:pretty}
+a{color:inherit}
+:focus-visible{outline:2px solid #000;outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.skip{position:absolute;left:12px;top:-60px;z-index:200;background:#000;color:#fff;padding:10px 16px;border-radius:8px;font:600 14px var(--ui);text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+[lang="ml"]{font-family:var(--ml)}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:100;background:#fff}
+.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:90;transition:background .25s,box-shadow .25s}
+.top.solid{background:#fff;box-shadow:0 1px 0 var(--line)}
+.top .bar{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#000}
+.ssf-mark{height:21px;width:auto;display:block}
+.logo span{font:600 22px/1 "Sora",sans-serif;letter-spacing:.06em}
+.menu{display:flex;gap:32px}
+.menu a{font:400 14px/1.5 var(--ui);letter-spacing:.025em;color:rgba(0,0,0,.55);text-decoration:none;padding:6px 0}
+.menu a:hover,.menu a.on{color:#000}
+.burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;place-items:center;color:#000}
+.burger i{display:block;width:24px;height:1.5px;background:currentColor;margin:5px auto;transition:transform .2s,opacity .2s}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* hero: the SSF Kerala campaign artwork, rebuilt from its layers */
+.hero{position:relative;overflow:hidden;padding-top:calc(96px + env(safe-area-inset-top,0px));background:linear-gradient(180deg,#d9e2ed 0%,#e7edf3 45%,#f3f6f8 75%,#fff 100%)}
+.hero h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.h-letter{position:relative;z-index:6;display:block;margin:0 auto;width:clamp(280px,36vw,540px);height:auto}
+.scene{position:relative;margin-top:clamp(-150px,-9vw,-60px);aspect-ratio:1920/860}
+.scene img{position:absolute;pointer-events:none;user-select:none;height:auto}
+.h-proc{z-index:2;left:0;bottom:0;width:100%}
+.h-crowd{z-index:1;right:-2%;bottom:30%;width:50%;-webkit-mask-image:linear-gradient(#000 62%,transparent 96%);mask-image:linear-gradient(#000 62%,transparent 96%)}
+.h-flag{z-index:1;left:31%;bottom:44%;width:12%}
+.scene::after{content:"";position:absolute;inset:auto 0 0 0;height:26%;z-index:7;background:linear-gradient(transparent,#fff 90%)}
+/* sections */
+main section{padding-block:120px;scroll-margin-top:72px}
+.kicker{display:flex;align-items:center;gap:12px;font:400 11px/1 var(--ui);letter-spacing:.2em;text-transform:uppercase;color:#9a9a9a;margin-bottom:22px}
+.kicker::before{content:"";width:28px;height:1px;background:#cfcfcf}
+h2{font:800 clamp(2.6rem,6vw,4.5rem)/1.02 "Manrope",sans-serif;letter-spacing:-.035em;margin:0;text-wrap:balance}
+h2 .soft{color:#9b9b9b}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:48px}
+.ghost{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:999px;background:#fff;font:500 14px/1 var(--ui);color:#000;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.06);transition:border-color .15s,box-shadow .15s}
+.ghost:hover{border-color:#000;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.ghost svg{width:14px;height:14px}
+.solid-btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:12px 22px;border-radius:12px;background:#000;color:#fff;font:600 14px/1 var(--ui);text-decoration:none;border:0}
+.solid-btn:hover{background:#2b2b2b}
+.solid-btn.light{background:#fff;color:#000}
+.solid-btn.light:hover{background:#ececec}
+.solid-btn svg{width:18px;height:18px}
+
+/* unit intro */
+.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:72px;align-items:start}
+.big-ml{font:700 clamp(3.4rem,8vw,6.2rem)/.98 var(--ml);margin:0;letter-spacing:-.01em}
+.big-ml span{display:block}
+.big-ml .soft{color:#a3a3a3}
+.intro-copy p{font:600 1.18rem/1.75 var(--ml);color:var(--text);margin:0 0 18px;max-width:46ch}
+.intro-copy p.en{font:400 1rem/1.7 "Manrope",sans-serif;color:var(--muted);margin-top:4px}
+.ladder{margin:36px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.ladder li{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line)}
+.ladder .lv{font:400 15px var(--ml);color:var(--muted)}
+.ladder b{font:700 1.2rem var(--ml)}
+.ladder small{font:400 12px var(--ui);letter-spacing:.04em;color:#a0a0a0}
+.ladder li.us b{font-size:1.45rem}
+.ladder li.us .lv{color:#000}
+
+/* updates (Instagram) */
+.feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;list-style:none;margin:0;padding:0}
+.post{background:var(--card);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.post a{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
+.post .ph{position:relative;aspect-ratio:1;background:#e6e6e6;overflow:hidden}
+.post .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease-out}
+.post a:hover .ph img{transform:scale(1.03)}
+.post .chip{position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);border-radius:999px;padding:4px 10px;font:500 10px/1.2 var(--ui);letter-spacing:.08em;text-transform:uppercase}
+.post .bd{padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.post time{font:400 11px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:#9a9a9a}
+.post p{margin:0;font:600 .98rem/1.55 var(--sans);color:#111;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.post .go{margin-top:auto;align-self:flex-end;width:34px;height:34px;border-radius:50%;border:1px solid #d6d6d6;display:grid;place-items:center;color:#555}
+.post .go svg{width:14px;height:14px}
+.dark-empty{background:var(--dark);color:#fff;border-radius:24px;padding:72px 32px;text-align:center;box-shadow:0 30px 60px rgba(0,0,0,.12);display:grid;justify-items:center;gap:14px}
+.dark-empty p{margin:0;color:#a9a9a9;font:400 14px/1.6 var(--ui)}
+.dark-empty b{font:700 1.5rem/1.4 var(--ml)}
+
+/* events */
+.ev-wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center}
+.ev-card{background:#fff;border-radius:24px;box-shadow:0 30px 70px rgba(0,0,0,.10),0 0 0 1px rgba(0,0,0,.04);padding:12px;min-height:280px;display:flex;flex-direction:column;justify-content:center}
+.ev-list{list-style:none;margin:0;padding:0}
+.ev-item{display:grid;grid-template-columns:76px 1fr;gap:18px;align-items:center;padding:18px;border-radius:16px}
+.ev-item + .ev-item{border-top:1px solid var(--line);border-radius:0}
+.ev-date{background:var(--card);border-radius:14px;text-align:center;padding:10px 0}
+.ev-date b{display:block;font:800 1.7rem/1 "Manrope",sans-serif}
+.ev-date small{font:500 10px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ev-item h3{margin:0 0 4px;font:700 1.1rem/1.4 var(--sans)}
+.ev-item p{margin:0;font:400 13px var(--ui);color:var(--muted)}
+.ev-none{text-align:center;padding:40px 24px;display:grid;gap:10px;justify-items:center}
+.ev-none b{font:700 1.35rem/1.5 var(--ml)}
+.ev-none p{margin:0;color:var(--muted);font:400 14px/1.6 var(--ui)}
+
+/* work areas: charcoal band */
+.band{background:var(--dark);color:#fff}
+.band h2{color:#fff}
+.band h2 .soft{color:#6f6f6f}
+.band .kicker{color:#8a8a8a}
+.band .kicker::before{background:#555}
+.areas{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:1px solid #3a3a3a}
+.areas li{padding:28px 22px 6px 0;min-width:0}
+.areas li + li{padding-left:22px;border-left:1px solid #3a3a3a}
+.areas b{display:block;font:700 1.55rem/1.3 var(--ml);margin-bottom:12px}
+.areas p{margin:0;font:400 1rem/1.7 var(--ml);color:#b5b5b5}
+.areas small{display:block;margin-top:12px;font:400 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:#777}
+
+/* committee */
+.team{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.member{background:var(--card);border-radius:18px;overflow:hidden;min-width:0}
+.member .ph{aspect-ratio:4/5;background:#e3e3e3;display:grid;place-items:center;font:800 2.4rem "Manrope",sans-serif;color:#b9b9b9}
+.member .ph img{width:100%;height:100%;object-fit:cover}
+.member .bd{padding:16px 18px 18px}
+.member b{display:block;font:700 1.08rem/1.4 var(--sans)}
+.member small{font:400 12px var(--ui);color:var(--muted);letter-spacing:.04em}
+
+/* join */
+.join{background:linear-gradient(180deg,#fff,#efefef)}
+.join-card{max-width:760px;margin:0 auto;background:var(--dark);color:#fff;border-radius:28px;padding:44px;box-shadow:0 30px 60px rgba(0,0,0,.18);display:grid;gap:26px}
+.join-card .row{display:flex;gap:16px;align-items:flex-start}
+.join-card .ic{width:46px;height:46px;border-radius:50%;background:#333;display:grid;place-items:center;flex:none}
+.join-card .ic img{width:26px;height:26px}
+.join-card h3{margin:0;font:700 1.6rem/1.35 var(--ml)}
+.join-card p{margin:6px 0 0;color:#a9a9a9;font:400 14px/1.6 var(--ui)}
+.join-card .acts{display:flex;gap:12px;flex-wrap:wrap}
+
+/* footer */
+footer{background:var(--foot);color:#fff}
+.f-cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.2fr;gap:40px;padding-block:72px 48px}
+footer .logo{color:#fff}
+footer .logo span{font-size:20px}
+footer .ssf-mark{height:19px}
+.f-socials{display:flex;gap:6px;margin-top:40px}
+.f-socials a{width:40px;height:40px;display:grid;place-items:center;color:#9a9a9a;border-radius:8px}
+.f-socials a:hover{color:#fff;background:#363636}
+.f-socials svg{width:19px;height:19px}
+.fh{margin:0 0 20px;font:600 13px var(--ui);letter-spacing:.12em;text-transform:uppercase}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer ul a,footer ul span{display:inline-block;padding:4px 0;font:400 14px/1.5 var(--ui);color:#a9a9a9;text-decoration:none}
+footer ul a:hover{color:#fff}
+footer ul .ml{font:400 15px/1.5 var(--ml)}
+.f-bottom{border-top:1px solid #3c3c3c;padding-block:24px;font:400 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:#777;display:flex;gap:18px;flex-wrap:wrap}
+
+@media (max-width:1000px){
+  .areas{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .areas li,.areas li + li{padding:26px 0 18px;border-left:0;border-bottom:1px solid #3a3a3a}
+  .areas li:nth-child(odd){padding-right:22px}
+  .areas li:nth-child(even){padding-left:22px;border-left:1px solid #3a3a3a}
+  .team{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .f-cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .menu{display:none;position:fixed;top:calc(72px + env(safe-area-inset-top,0px));left:0;right:0;bottom:0;background:#fff;flex-direction:column;gap:0;padding:12px max(24px,env(safe-area-inset-right,0px)) 24px max(24px,env(safe-area-inset-left,0px));overflow:auto}
+  .menu.open{display:flex}
+  .menu a{font:500 1.5rem/1.2 "Manrope",sans-serif;color:#000;padding:16px 0;border-bottom:1px solid var(--line);letter-spacing:-.01em}
+  .burger{display:block}
+  .intro,.ev-wrap{grid-template-columns:1fr;gap:40px}
+  .feed{grid-template-columns:repeat(2,minmax(0,1fr))}
+  main section{padding-block:84px}
+  .h-letter{width:min(80vw,420px)}
+  .scene{width:170vw;margin-left:-35vw;margin-top:-14vw}
+}
+@media (max-width:560px){
+  .feed,.team{grid-template-columns:1fr}
+  .areas{grid-template-columns:1fr}
+  .areas li:nth-child(even){padding-left:0;border-left:0}
+  .areas li:nth-child(odd){padding-right:0}
+  .ladder li{grid-template-columns:96px 1fr}
+  .ladder small{display:none}
+  .join-card{padding:30px 22px}
+  .f-cols{grid-template-columns:1fr}
+  .ev-item{grid-template-columns:64px 1fr;padding:14px}
+  .top .bar{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+  .logo span{font-size:19px}.ssf-mark{height:18px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 8h-1.5A2.5 2.5 0 0 0 11 10.5V21M8.5 13h5.5"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="top" id="top">
+  <div class="bar">
+    <a class="logo" href="#" aria-label="SSF Nettur, home"><svg class="ssf-mark" viewBox="0 -1393 3916 1420" aria-hidden="true" focusable="false"><g transform="scale(1 -1)" fill="currentColor"><path transform="translate(0 0)" d="M644 1393Q747 1393 914 1342Q934 1336 946 1336Q956 1336 1006 1354Q1022 1360 1040 1360Q1107 1360 1181.5 1254.0Q1256 1148 1256 1052Q1256 996 1222.5 957.5Q1189 919 1141 919Q1101 919 1076.0 935.0Q1051 951 966 1030Q846 1142 730 1142Q674 1142 640.5 1115.0Q607 1088 607 1044Q607 957 760 913Q967 852 1025 824Q1280 700 1280 459Q1280 246 1106 111Q928 -27 641 -27Q513 -27 371.0 3.5Q229 34 166 75Q118 107 79.5 214.5Q41 322 41 424Q41 473 61 498Q86 530 124 530Q162 530 197 491Q218 469 296 350Q333 294 413.5 257.0Q494 220 580 220Q654 220 700.0 247.5Q746 275 746 318Q746 358 710.0 387.0Q674 416 593 441Q450 486 375.0 523.5Q300 561 235 618Q77 758 77 936Q77 1024 118.0 1107.5Q159 1191 234 1252Q402 1393 644 1393Z"/><path transform="translate(1281 0)" d="M644 1393Q747 1393 914 1342Q934 1336 946 1336Q956 1336 1006 1354Q1022 1360 1040 1360Q1107 1360 1181.5 1254.0Q1256 1148 1256 1052Q1256 996 1222.5 957.5Q1189 919 1141 919Q1101 919 1076.0 935.0Q1051 951 966 1030Q846 1142 730 1142Q674 1142 640.5 1115.0Q607 1088 607 1044Q607 957 760 913Q967 852 1025 824Q1280 700 1280 459Q1280 246 1106 111Q928 -27 641 -27Q513 -27 371.0 3.5Q229 34 166 75Q118 107 79.5 214.5Q41 322 41 424Q41 473 61 498Q86 530 124 530Q162 530 197 491Q218 469 296 350Q333 294 413.5 257.0Q494 220 580 220Q654 220 700.0 247.5Q746 275 746 318Q746 358 710.0 387.0Q674 416 593 441Q450 486 375.0 523.5Q300 561 235 618Q77 758 77 936Q77 1024 118.0 1107.5Q159 1191 234 1252Q402 1393 644 1393Z"/><path transform="translate(2562 0)" d="M773 1159Q704 1159 688 1124Q676 1098 665.5 1022.0Q655 946 655 884Q655 847 679.0 833.0Q703 819 769 819Q813 819 834.0 835.0Q855 851 863 889Q886 998 957 998Q1079 998 1079 706Q1079 521 1026 434Q994 381 938 381Q879 381 870 460Q865 511 857.5 532.0Q850 553 829 572Q796 603 733 603Q688 603 672.0 587.0Q656 571 658 526Q658 518 657 433Q657 260 693 222Q705 207 717.5 202.5Q730 198 783 190Q809 186 827.0 163.0Q845 140 845 110Q845 33 755 11Q625 -20 390 -20Q184 -20 106 4Q71 15 49.0 44.0Q27 73 27 108Q27 152 59 179Q67 185 114 204Q170 226 181 306Q199 429 199 867Q199 1056 186.0 1112.0Q173 1168 123 1190Q73 1212 57.5 1228.5Q42 1245 42 1276Q42 1320 85.0 1349.5Q128 1379 191 1379Q231 1379 308 1373Q471 1360 698 1360Q1061 1360 1187 1380Q1204 1382 1213 1382Q1248 1382 1280 1342Q1368 1230 1368 1094Q1368 1032 1339.0 995.0Q1310 958 1263 958Q1228 958 1210.0 972.0Q1192 986 1118 1070Q1073 1122 1009.5 1138.0Q946 1154 773 1159Z"/></g></svg><span>NETTUR</span></a>
+    <nav class="menu" id="menu" aria-label="Main">
+      <a href="#unit">About</a>
+      <a href="#updates">Updates</a>
+      <a href="#events">Events</a>
+      <a href="#work">Activities</a>
+      <a href="#committee" data-needs="committee">Committee</a>
+      <a href="#join">Contact</a>
+    </nav>
+    <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</div>
+
+<header class="hero">
+  <h1>എസ് എസ് എഫ് നെട്ടൂർ യൂണിറ്റ്: ജീവിതമാവുക</h1>
+  <img class="h-letter" src="assets/jeevithamavuka.webp" alt="ജീവിതമാവുക" width="1400" height="965" fetchpriority="high">
+  <div class="scene" aria-hidden="true">
+    <img class="h-flag" src="assets/flag.webp" alt="" width="652" height="466">
+    <img class="h-proc" src="assets/procession.webp" alt="" width="1920" height="672">
+    <img class="h-crowd" src="assets/crowd.webp" alt="" width="1278" height="578">
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<section id="unit" aria-labelledby="unit-h">
+  <div class="wrap intro">
+    <h2 class="big-ml" id="unit-h" lang="ml"><span>എസ് എസ് എഫ്</span><span class="soft">നെട്ടൂർ</span></h2>
+    <div class="intro-copy">
+      <p lang="ml">നെട്ടൂരിലെ വിദ്യാർഥികൾ ഒന്നിച്ചിരിക്കുന്ന ഇടം. പഠനവും ആത്മീയതയും സർഗാത്മകതയും സേവനവും ചേർത്തുപിടിച്ച്, എസ് എസ് എഫിന്റെ ആശയങ്ങളെ നാട്ടിലെ ജീവിതമാക്കുകയാണ് യൂണിറ്റിന്റെ ലക്ഷ്യം.</p>
+      <p class="en">SSF Nettur is the unit of the Sunni Students' Federation for the students of Nettur, Thalassery.</p>
+      <ul class="ladder">
+        <li class="us"><span class="lv" lang="ml">യൂണിറ്റ്</span><b lang="ml">നെട്ടൂർ</b><small>Unit</small></li>
+        <li><span class="lv" lang="ml">സെക്ടർ</span><b lang="ml">ധർമ്മടം</b><small>Dharmadam</small></li>
+        <li><span class="lv" lang="ml">ഡിവിഷൻ</span><b lang="ml">തലശ്ശേരി</b><small>Thalassery</small></li>
+        <li><span class="lv" lang="ml">ജില്ല</span><b lang="ml">കണ്ണൂർ</b><small>Kannur</small></li>
+        <li><span class="lv" lang="ml">സംസ്ഥാനം</span><b>SSF Kerala</b><small>State</small></li>
+        <li><span class="lv" lang="ml">ദേശീയം</span><b>SSF India</b><small>National</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="updates" aria-labelledby="updates-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">From Instagram</div>
+    <div class="head">
+      <h2 id="updates-h">Latest Updates</h2>
+      <a class="ghost" href="https://www.instagram.com/ssf_nettur" target="_blank" rel="noopener">View on Instagram <svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+    </div>
+    <ul class="feed" id="feed" hidden></ul>
+    <div class="dark-empty" id="feed-empty">
+      <b lang="ml">പുതിയ വിശേഷങ്ങൾ ഇൻസ്റ്റഗ്രാമിൽ</b>
+      <p>Programme posters, dates and photos are posted on @ssf_nettur first.</p>
+      <a class="solid-btn light" href="https://www.instagram.com/ssf_nettur" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Open @ssf_nettur</a>
+    </div>
+  </div>
+</section>
+
+<section id="events" aria-labelledby="events-h" style="background:linear-gradient(180deg,#fff,#f4f4f4)">
+  <div class="wrap ev-wrap">
+    <div>
+      <div class="kicker">Mark your calendar</div>
+      <h2 id="events-h">Upcoming<br>Events</h2>
+      <p style="margin:22px 0 28px;color:var(--muted);font:400 15px/1.7 var(--ui);max-width:36ch">Unit programmes, Sahityotsav rounds and meetings in Nettur.</p>
+    </div>
+    <div class="ev-card">
+      <ul class="ev-list" id="ev-list" hidden></ul>
+      <div class="ev-none" id="ev-none">
+        <b lang="ml">പുതിയ പരിപാടികൾ ഉടൻ പ്രഖ്യാപിക്കും</b>
+        <p>No programmes announced yet. Follow @ssf_nettur to hear first.</p>
+        <a class="ghost" href="https://www.instagram.com/ssf_nettur" target="_blank" rel="noopener">Follow @ssf_nettur <svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="band" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="kicker">What we do</div>
+    <div class="head"><h2 id="work-h">Our <span class="soft">Work</span></h2></div>
+    <ul class="areas">
+      <li><b lang="ml">ആത്മീയം</b><p lang="ml">വിശ്വാസവും ജീവിതവും ചേർത്തുവെക്കുന്ന പഠന സദസ്സുകൾ.</p><small>Faith</small></li>
+      <li><b lang="ml">സാംസ്കാരികം</b><p lang="ml">യൂണിറ്റ് സാഹിത്യോത്സവ് മുതൽ മേൽഘടകങ്ങൾ വരെ സർഗശേഷിക്ക് വേദി.</p><small>Sahityotsav</small></li>
+      <li><b lang="ml">വിദ്യാഭ്യാസം</b><p lang="ml">പഠനത്തിലും കരിയർ തിരഞ്ഞെടുപ്പിലും വഴികാട്ടൽ.</p><small>Education</small></li>
+      <li><b lang="ml">വായന</b><p lang="ml">രിസാല വാരികയിലൂടെ വായനയുടെ ശീലം.</p><small>Risala</small></li>
+      <li><b lang="ml">സേവനം</b><p lang="ml">നാടിന്റെ ആവശ്യങ്ങളിൽ ഒപ്പം നിൽക്കുന്ന പ്രവർത്തനങ്ങൾ.</p><small>Service</small></li>
+    </ul>
+  </div>
+</section>
+
+<section id="committee" aria-labelledby="committee-h" hidden>
+  <div class="wrap">
+    <div class="kicker">Unit committee</div>
+    <div class="head"><h2 id="committee-h">The <span class="soft">Team</span></h2></div>
+    <ul class="team" id="team"></ul>
+  </div>
+</section>
+
+<section id="join" class="join" aria-labelledby="join-h">
+  <div class="wrap">
+    <div class="join-card">
+      <div class="row">
+        <span class="ic" aria-hidden="true"><img src="assets/ssf-emblem.png" alt="" width="26" height="26"></span>
+        <div>
+          <h3 id="join-h" lang="ml">എസ് എസ് എഫിൽ അംഗമാകാം</h3>
+          <p>Students of Nettur can join the unit. Message us on Instagram and a unit member will reply.</p>
+        </div>
+      </div>
+      <div class="acts">
+        <a class="solid-btn light" href="https://www.instagram.com/ssf_nettur" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Message on Instagram</a>
+        <a class="solid-btn" style="background:#333" href="https://www.facebook.com/share/19qNzpWRzc/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-fb"/></svg>Facebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap f-cols">
+    <div>
+      <a class="logo" href="#" aria-label="SSF Nettur, back to top"><svg class="ssf-mark" viewBox="0 -1393 3916 1420" aria-hidden="true" focusable="false"><g transform="scale(1 -1)" fill="currentColor"><path transform="translate(0 0)" d="M644 1393Q747 1393 914 1342Q934 1336 946 1336Q956 1336 1006 1354Q1022 1360 1040 1360Q1107 1360 1181.5 1254.0Q1256 1148 1256 1052Q1256 996 1222.5 957.5Q1189 919 1141 919Q1101 919 1076.0 935.0Q1051 951 966 1030Q846 1142 730 1142Q674 1142 640.5 1115.0Q607 1088 607 1044Q607 957 760 913Q967 852 1025 824Q1280 700 1280 459Q1280 246 1106 111Q928 -27 641 -27Q513 -27 371.0 3.5Q229 34 166 75Q118 107 79.5 214.5Q41 322 41 424Q41 473 61 498Q86 530 124 530Q162 530 197 491Q218 469 296 350Q333 294 413.5 257.0Q494 220 580 220Q654 220 700.0 247.5Q746 275 746 318Q746 358 710.0 387.0Q674 416 593 441Q450 486 375.0 523.5Q300 561 235 618Q77 758 77 936Q77 1024 118.0 1107.5Q159 1191 234 1252Q402 1393 644 1393Z"/><path transform="translate(1281 0)" d="M644 1393Q747 1393 914 1342Q934 1336 946 1336Q956 1336 1006 1354Q1022 1360 1040 1360Q1107 1360 1181.5 1254.0Q1256 1148 1256 1052Q1256 996 1222.5 957.5Q1189 919 1141 919Q1101 919 1076.0 935.0Q1051 951 966 1030Q846 1142 730 1142Q674 1142 640.5 1115.0Q607 1088 607 1044Q607 957 760 913Q967 852 1025 824Q1280 700 1280 459Q1280 246 1106 111Q928 -27 641 -27Q513 -27 371.0 3.5Q229 34 166 75Q118 107 79.5 214.5Q41 322 41 424Q41 473 61 498Q86 530 124 530Q162 530 197 491Q218 469 296 350Q333 294 413.5 257.0Q494 220 580 220Q654 220 700.0 247.5Q746 275 746 318Q746 358 710.0 387.0Q674 416 593 441Q450 486 375.0 523.5Q300 561 235 618Q77 758 77 936Q77 1024 118.0 1107.5Q159 1191 234 1252Q402 1393 644 1393Z"/><path transform="translate(2562 0)" d="M773 1159Q704 1159 688 1124Q676 1098 665.5 1022.0Q655 946 655 884Q655 847 679.0 833.0Q703 819 769 819Q813 819 834.0 835.0Q855 851 863 889Q886 998 957 998Q1079 998 1079 706Q1079 521 1026 434Q994 381 938 381Q879 381 870 460Q865 511 857.5 532.0Q850 553 829 572Q796 603 733 603Q688 603 672.0 587.0Q656 571 658 526Q658 518 657 433Q657 260 693 222Q705 207 717.5 202.5Q730 198 783 190Q809 186 827.0 163.0Q845 140 845 110Q845 33 755 11Q625 -20 390 -20Q184 -20 106 4Q71 15 49.0 44.0Q27 73 27 108Q27 152 59 179Q67 185 114 204Q170 226 181 306Q199 429 199 867Q199 1056 186.0 1112.0Q173 1168 123 1190Q73 1212 57.5 1228.5Q42 1245 42 1276Q42 1320 85.0 1349.5Q128 1379 191 1379Q231 1379 308 1373Q471 1360 698 1360Q1061 1360 1187 1380Q1204 1382 1213 1382Q1248 1382 1280 1342Q1368 1230 1368 1094Q1368 1032 1339.0 995.0Q1310 958 1263 958Q1228 958 1210.0 972.0Q1192 986 1118 1070Q1073 1122 1009.5 1138.0Q946 1154 773 1159Z"/></g></svg><span>NETTUR</span></a>
+      <div class="f-socials">
+        <a href="https://www.instagram.com/ssf_nettur" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a href="https://www.facebook.com/share/19qNzpWRzc/" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+      </div>
+    </div>
+    <nav aria-label="Footer"><p class="fh">Quick Links</p><ul><li><a href="#unit">About</a></li><li><a href="#updates">Updates</a></li><li><a href="#events">Events</a></li><li><a href="#work">Activities</a></li></ul></nav>
+    <div><p class="fh">SSF</p><ul><li><a href="https://ssfkerala.org/" target="_blank" rel="noopener">SSF Kerala</a></li><li><a href="https://www.nationalssf.org/" target="_blank" rel="noopener">SSF India</a></li></ul></div>
+    <div><p class="fh">Unit</p><ul><li><span class="ml" lang="ml">നെട്ടൂർ, തലശ്ശേരി</span></li><li><span>Dharmadam Sector</span></li><li><span>Thalassery Division</span></li><li><span>Kannur District</span></li></ul></div>
+  </div>
+  <div class="wrap f-bottom"><span>© 2026 SSF Nettur Unit</span><span>Sunni Students' Federation</span></div>
+</footer>
+
+<script>
+/* ===== Edit these three to update the site ===== */
+// 1. Behold JSON feed URL for @ssf_nettur (https://feeds.behold.so/XXXX). Empty = show the Instagram card.
+const INSTAGRAM_FEED_URL='';
+// 2. Upcoming events. Example: {date:'2026-12-06', title:'യൂണിറ്റ് സാഹിത്യോത്സവ്', place:'Nettur', time:'9:00 AM'}
+const EVENTS=[];
+// 3. Committee. Example: {name:'Name', role:'President', photo:'assets/team/president.webp'}
+const COMMITTEE=[];
+/* =============================================== */
+
+const hdr=document.getElementById('top');
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>40||menu.classList.contains('open'));
+const menu=document.getElementById('menu'),burger=document.querySelector('.burger');
+function setMenu(o){menu.classList.toggle('open',o);burger.setAttribute('aria-expanded',String(o));document.body.style.overflow=o?'hidden':'';onScroll();}
+burger.addEventListener('click',()=>setMenu(!menu.classList.contains('open')));
+menu.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false);});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&menu.classList.contains('open')){setMenu(false);burger.focus();}});
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const hasMl=s=>/[\u0D00-\u0D7F]/.test(s);
+
+// events
+(function(){
+  const today=new Date();today.setHours(0,0,0,0);
+  const list=EVENTS.filter(e=>new Date(e.date)>=today).sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,4);
+  if(!list.length)return;
+  const ul=document.getElementById('ev-list'),mon=new Intl.DateTimeFormat('en-IN',{month:'short'});
+  ul.innerHTML=list.map(e=>{const d=new Date(e.date);return `<li class="ev-item"><div class="ev-date"><b>${d.getDate()}</b><small>${mon.format(d)}</small></div><div><h3${hasMl(e.title)?' lang="ml"':''}>${esc(e.title)}</h3><p>${esc([e.time,e.place].filter(Boolean).join(', '))}</p></div></li>`}).join('');
+  ul.hidden=false;document.getElementById('ev-none').hidden=true;
+})();
+
+// committee
+(function(){
+  if(!COMMITTEE.length){document.querySelectorAll('[data-needs="committee"]').forEach(a=>a.hidden=true);return;}
+  document.getElementById('team').innerHTML=COMMITTEE.map(m=>`<li class="member"><div class="ph">${m.photo?`<img src="${esc(m.photo)}" alt="${esc(m.name)}" loading="lazy">`:esc(m.name.trim()[0]||'')}</div><div class="bd"><b${hasMl(m.name)?' lang="ml"':''}>${esc(m.name)}</b><small>${esc(m.role)}</small></div></li>`).join('');
+  document.getElementById('committee').hidden=false;
+})();
+
+// Instagram feed (Behold JSON)
+(async function(){
+  if(!INSTAGRAM_FEED_URL)return;
+  const ul=document.getElementById('feed'),empty=document.getElementById('feed-empty');
+  try{
+    const r=await fetch(INSTAGRAM_FEED_URL);if(!r.ok)throw 0;
+    const d=await r.json(),posts=(Array.isArray(d)?d:d.posts||[]).filter(p=>p.permalink).slice(0,6);
+    if(!posts.length)throw 0;
+    const fmt=new Intl.DateTimeFormat('en-IN',{day:'numeric',month:'short',year:'numeric'});
+    ul.innerHTML=posts.map(p=>{
+      const img=(p.sizes&&p.sizes.medium&&p.sizes.medium.mediaUrl)||(p.mediaType==='VIDEO'?p.thumbnailUrl:p.mediaUrl)||'';
+      const cap=(p.prunedCaption||p.caption||'').trim(),kind=p.mediaType==='VIDEO'?'Video':p.mediaType==='CAROUSEL_ALBUM'?'Album':'Post';
+      return `<li class="post"><a href="${esc(p.permalink)}" target="_blank" rel="noopener"><div class="ph">${img?`<img src="${esc(img)}" alt="${esc(cap.slice(0,120)||'SSF Nettur post')}" loading="lazy" width="400" height="400">`:''}<span class="chip">${kind}</span></div><div class="bd">${p.timestamp?`<time datetime="${esc(p.timestamp)}">${fmt.format(new Date(p.timestamp))}</time>`:''}<p${hasMl(cap)?' lang="ml"':''}>${esc(cap.slice(0,160))}</p><span class="go" aria-hidden="true"><svg><use href="#i-out"/></svg></span></div></a></li>`;
+    }).join('');
+    ul.hidden=false;empty.hidden=true;
+  }catch(e){ul.hidden=true;empty.hidden=false;}
+})();
+</script>
+
+</body>
+</html>
