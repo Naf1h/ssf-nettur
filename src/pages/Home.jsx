@@ -1,88 +1,69 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { unit, intro, campaign, areas } from '../data/unitData.js';
-import { CampaignHero, StatsStrip, SectionHead, EventList, JoinBand, AreaIcon } from '../components/blocks.jsx';
-import InstagramFeed from '../components/InstagramFeed.jsx';
+import { unit } from '../data/unitData.js';
+import { SectionHead, HierarchyStrip, StatsGrid, FeaturedPosters, DepartmentBento, JoinBand } from '../components/ui.jsx';
 import usePageTitle from '../components/usePageTitle.js';
 
-// Bento placement for the five work areas (asymmetric on purpose).
-const bento = [
-  'md:col-span-3 md:row-span-2 bg-surface-dark text-white',
-  'md:col-span-3',
-  'md:col-span-3',
-  'md:col-span-2',
-  'md:col-span-4',
-];
+function Hero() {
+  return (
+    <section aria-labelledby="hero-title" className="bg-navy text-white">
+      <div className="page grid border-x border-white/10 lg:grid-cols-12">
+        <div className="flex flex-col border-b border-white/10 py-14 sm:py-20 lg:col-span-8 lg:border-b-0 lg:border-r lg:pr-12">
+          <p className="tag text-white/50">{unit.federation.toUpperCase()} // EST. 1973</p>
+          <h1 id="hero-title" className="h-display mt-8 text-[3.4rem] sm:text-7xl lg:text-[6.5rem]">SSF Nettur<br />Unit</h1>
+          <p className="mt-8 max-w-xl text-lg text-white/70">{unit.intro}</p>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <Link to="/join" className="btn-green">Become a member<ArrowRight className="size-4" aria-hidden="true" /></Link>
+            <Link to="/programmes" className="btn-ghost-dark">See programmes</Link>
+          </div>
+        </div>
+        <div className="grid grid-rows-[1fr_auto] lg:col-span-4">
+          <div className="relative grid min-h-[300px] place-items-center overflow-hidden py-12 lg:py-0">
+            <div className="absolute inset-y-0 left-1/2 flex w-[180px] -translate-x-1/2 sm:w-[220px]" aria-hidden="true">
+              <span className="flex-1 bg-brand-blue" />
+              <span className="flex-1 bg-white" />
+              <span className="flex-1 bg-brand-green" />
+            </div>
+            <div className="relative grid size-[150px] place-items-center bg-white ring-1 ring-line sm:size-[176px]">
+              <img src="/assets/ssf-emblem.png" alt="SSF emblem" width="180" height="180" className="size-[110px] sm:size-[128px]" />
+            </div>
+          </div>
+          <div className="border-t border-white/10 py-6 lg:pl-10">
+            <p className="tag text-white/50">2026 // STATE CAMPAIGN</p>
+            <p lang="ml" className="ml-title mt-2 text-4xl font-extrabold">{unit.campaignMl}</p>
+          </div>
+        </div>
+      </div>
+      <div className="page border-x border-t border-white/10 px-0 sm:px-0">
+        <HierarchyStrip dark />
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   usePageTitle('');
   return (
     <>
-      <CampaignHero />
-
-      <section aria-labelledby="unit-title" className="page grid gap-10 pb-16 pt-4 md:grid-cols-12 md:pb-20">
-        <div className="md:col-span-7">
-          <p lang="ml" className="text-lg font-semibold text-brand-blue">{unit.nameMl}</p>
-          <h1 id="unit-title" className="display mt-2 text-5xl sm:text-6xl lg:text-7xl">{unit.name}</h1>
-          <p className="mt-6 max-w-xl text-lg text-ink-muted">{intro.en}</p>
-        </div>
-        <div className="md:col-span-5 md:pt-10">
-          <p lang="ml" className="text-lg text-ink">{intro.ml}</p>
-          <div className="mt-8 flex items-center justify-between gap-4 border border-line p-5">
-            <div>
-              <p className="label">{campaign.year} {campaign.by}</p>
-              <p className="mt-1 font-bold"><span lang="ml">{campaign.ml}</span> <span className="font-medium text-ink-muted">· {campaign.en}</span></p>
-            </div>
-            <Link to="/about" className="grid size-11 shrink-0 place-items-center rounded-lg border border-line hover:border-ink" aria-label="About the unit">
-              <ArrowRight className="size-5" aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
+      <Hero />
+      <section aria-labelledby="stats-title" className="page py-16 md:py-24">
+        <h2 id="stats-title" className="tag mb-6 text-brand-blue">SSF // IN NUMBERS</h2>
+        <StatsGrid />
       </section>
-
-      <StatsStrip />
-
-      <section aria-labelledby="work-title" className="bg-surface-alt py-20 md:py-28">
+      <section aria-labelledby="featured-title" className="border-t border-line bg-alt py-16 md:py-24">
         <div className="page">
-          <SectionHead ml="പ്രവർത്തനങ്ങൾ" title="What we do" id="work-title">
-            <p className="max-w-sm text-ink-muted">Our work follows SSF's areas of work, brought down to the students and families of Nettur.</p>
+          <SectionHead tag="FEATURED // INITIATIVES" title="Now in Nettur" id="featured-title">
+            <Link to="/programmes" className="btn-line">All programmes<ArrowRight className="size-4" aria-hidden="true" /></Link>
           </SectionHead>
-          <ul className="grid gap-px border border-line bg-line md:grid-cols-6">
-            {areas.map((a, i) => (
-              <li key={a.id} className={`flex flex-col gap-4 p-7 sm:p-8 ${i === 0 ? '' : 'bg-white'} ${bento[i]}`}>
-                <AreaIcon name={a.icon} className={`size-7 ${i === 0 ? 'text-brand-green' : 'text-brand-blue'}`} />
-                <div className={i === 0 ? 'mt-auto' : ''}>
-                  <p lang="ml" className={`font-bold ${i === 0 ? 'text-4xl sm:text-5xl' : 'text-2xl'}`}>{a.ml}</p>
-                  <p className={`mt-1 text-sm font-semibold ${i === 0 ? 'text-slate-400' : 'text-ink-muted'}`}>{a.en}</p>
-                </div>
-                <p lang="ml" className={i === 0 ? 'text-lg text-slate-200' : 'text-ink'}>{a.textMl}</p>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-10"><FeaturedPosters /></div>
         </div>
       </section>
-
-      <section aria-labelledby="updates-title" className="page grid gap-10 py-20 md:grid-cols-12 md:py-28">
-        <div className="md:col-span-4">
-          <div className="md:sticky md:top-28">
-            <p lang="ml" className="mb-3 text-base font-semibold text-brand-blue">പുതിയ വിശേഷങ്ങൾ</p>
-            <h2 id="updates-title" className="display text-4xl sm:text-5xl">Latest updates</h2>
-            <p className="mt-4 text-ink-muted">Straight from our Instagram.</p>
-            <Link to="/updates" className="btn-line mt-6">All updates<ArrowRight className="size-4" aria-hidden="true" /></Link>
-          </div>
-        </div>
-        <div className="md:col-span-8"><InstagramFeed limit={6} /></div>
+      <section aria-labelledby="dept-title" className="page py-16 md:py-24">
+        <SectionHead tag="DEPARTMENTS // 06" title="How the unit works" id="dept-title">
+          <Link to="/departments" className="btn-line">All departments<ArrowRight className="size-4" aria-hidden="true" /></Link>
+        </SectionHead>
+        <div className="mt-10"><DepartmentBento compact /></div>
       </section>
-
-      <section aria-labelledby="events-title" className="border-t border-line bg-surface-alt py-20 md:py-28">
-        <div className="page">
-          <SectionHead ml="പരിപാടികൾ" title="Upcoming events" id="events-title">
-            <Link to="/events" className="btn-line">All events<ArrowRight className="size-4" aria-hidden="true" /></Link>
-          </SectionHead>
-          <EventList limit={3} />
-        </div>
-      </section>
-
       <JoinBand />
     </>
   );

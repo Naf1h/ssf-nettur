@@ -9,7 +9,7 @@ export default function Layout() {
 
   return (
     <>
-      <a href="#main" className="fixed left-3 top-[-60px] z-skip rounded-lg bg-surface-dark px-4 py-2.5 text-sm font-semibold text-white focus:top-3">
+      <a href="#main" className="fixed left-3 top-[-60px] z-skip bg-navy px-4 py-2.5 text-sm font-semibold text-white focus:top-3">
         Skip to content
       </a>
       <Header />

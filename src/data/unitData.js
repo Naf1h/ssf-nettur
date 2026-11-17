@@ -1,75 +1,120 @@
-// All site content lives here. Edit this file to update the website.
-// Rule: no placeholder text. Leave a list empty instead of filling it with dummy entries;
-// the site hides or explains empty sections on its own.
+// ============================================================
+// SSF NETTUR UNIT: ALL SITE CONTENT LIVES IN THIS FILE.
+// Rule: no placeholder text. Leave a field empty ('') instead of
+// writing "To be updated"; the site hides empty fields on its own.
+// Script rule: English UI and summaries; Malayalam only in titleMl.
+// ============================================================
 
+// 1. EXECUTIVE COMMITTEE: copy names from the latest @ssf_nettur committee post.
+export const committee = [
+  { role: 'President', duty: 'Leads the unit and chairs its meetings.', name: '', photo: '' },
+  { role: 'General Secretary', duty: 'Runs unit activities and keeps its records.', name: '', photo: '' },
+  { role: 'Finance Secretary', duty: 'Keeps the unit accounts and membership dues.', name: '', photo: '' },
+];
+// Secretariat members and wing convenors, e.g. { role: 'Convenor, WEFI', name: 'Full Name' }
+export const secretariat = [];
+
+// 2. POSTERS: programmes, campaigns and the archive.
+// status: 'UPCOMING' | 'ONGOING' | 'COMPLETED' | 'RECURRING'
+// image: a 4:5 Instagram poster saved in public/posters/, e.g. '/posters/sahityotsav-2026.webp'
+// url: the Instagram post link. date: 'YYYY-MM-DD' when the programme has one.
+export const posters = [
+  {
+    id: 'membership',
+    tag: 'CAMPAIGN // MEMBERSHIP',
+    titleMl: 'ജീവിതമാവുക — യൂണിറ്റ് മെമ്പർഷിപ്പ് ക്യാമ്പയിൻ',
+    summary: "SSF's 2026 membership campaign, carried to every student in Nettur.",
+    status: 'ONGOING', when: '2026', date: '', image: '', url: '', featured: true,
+  },
+  {
+    id: 'sahityotsav',
+    tag: 'SAHITYOTSAV // CULTURAL FEST',
+    titleMl: 'യൂണിറ്റ് സാഹിത്യോത്സവ്',
+    summary: "Competitions that pick Nettur's team for the sector Sahityotsav.",
+    status: 'RECURRING', when: 'Annual', date: '', image: '', url: '', featured: true,
+  },
+  {
+    id: 'risala-circle',
+    tag: 'RISALA // STUDY CIRCLE',
+    titleMl: 'രിസാല സ്റ്റഡി സർക്കിൾ',
+    summary: 'Reading and discussing Risala weekly together.',
+    status: 'RECURRING', when: 'Regular', date: '', image: '', url: '', featured: true,
+  },
+  {
+    id: 'dars',
+    tag: 'DARS // STUDY CIRCLE',
+    titleMl: 'ദർസ് & പഠന ക്ലാസ്',
+    summary: 'A weekly class on religious texts for unit members.',
+    status: 'RECURRING', when: 'Weekly', date: '', image: '', url: '',
+  },
+  {
+    id: 'mazhavil',
+    tag: 'MAZHAVIL // CHILDREN',
+    titleMl: 'മഴവിൽ സംഗമം',
+    summary: 'A monthly gathering for children and school students.',
+    status: 'RECURRING', when: 'Monthly', date: '', image: '', url: '',
+  },
+  {
+    id: 'wefi',
+    tag: 'WEFI // CAREER CLINIC',
+    titleMl: 'കരിയർ & അഡ്മിഷൻ ഡെസ്ക്',
+    summary: 'Help with courses, entrance exams and college admissions.',
+    status: 'RECURRING', when: 'Ongoing', date: '', image: '', url: '',
+  },
+];
+
+// 3. DEPARTMENTS (modeled on nationalssf.org's departments)
+export const departments = [
+  { id: 'campus', tag: 'CAMPUS // HIGHER EDUCATION', titleMl: 'ക്യാമ്പസ്', title: 'Campus', summary: "Support for Nettur students in colleges and universities, linked to SSF's higher education department.", icon: 'Building2' },
+  { id: 'wefi', tag: 'WEFI // EDUCATION & CAREER', titleMl: 'വെഫി', title: 'WEFI Education & Career', summary: "Course, entrance exam and admission guidance through WEFI, SSF's education department.", icon: 'GraduationCap' },
+  { id: 'sahityotsav', tag: 'SAHITYOTSAV // CULTURE', titleMl: 'സാഹിത്യോത്സവ്', title: 'Sahityotsav & Culture', summary: "The unit round of SSF's arts and literary festival, and training for the sector and division rounds.", icon: 'Feather' },
+  { id: 'risala', tag: 'RISALA // PUBLICATIONS', titleMl: 'രിസാല', title: 'Risala Publications', summary: 'Risala weekly delivered to homes in Nettur, and a study circle that reads it together.', icon: 'Newspaper' },
+  { id: 'mazhavil', tag: 'MAZHAVIL // CHILDREN', titleMl: 'മഴവിൽ', title: "Mazhavil Children's Wing", summary: 'A monthly Mazhavil Sangamam for children and school students in Nettur.', icon: 'Sparkles' },
+  { id: 'service', tag: 'SERVICE // COMMUNITY', titleMl: 'സേവനം', title: 'Social Service', summary: 'A student help desk and service work for families in Nettur.', icon: 'HandHeart' },
+];
+
+// 4. UNIT FACTS
 export const unit = {
   name: 'SSF Nettur Unit',
   nameMl: 'എസ് എസ് എഫ് നെട്ടൂർ യൂണിറ്റ്',
-  shortMl: 'നെട്ടൂർ',
+  federation: "Sunni Students' Federation",
   place: 'Nettur, Thalassery, Kannur, Kerala',
-  placeMl: 'നെട്ടൂർ, തലശ്ശേരി',
-};
-
-export const campaign = {
-  ml: 'ജീവിതമാവുക',
-  en: 'Live the Message',
-  year: 2026,
-  by: 'SSF Kerala state campaign',
+  intro: "SSF Nettur is the Sunni Students' Federation unit for the students of Nettur, Thalassery. It brings students together for study, culture, career guidance and service, as part of Dharmadam Sector, Thalassery Division and Kannur District.",
+  campaignMl: 'ജീവിതമാവുക',
+  campaign: '2026 SSF Kerala membership campaign',
 };
 
 // Top to bottom: national body down to this unit.
 export const hierarchy = [
-  { level: 'National', levelMl: 'ദേശീയം', name: 'SSF India', nameMl: 'എസ് എസ് എഫ് ഇന്ത്യ', url: 'https://www.nationalssf.org/' },
-  { level: 'State', levelMl: 'സംസ്ഥാനം', name: 'SSF Kerala', nameMl: 'എസ് എസ് എഫ് കേരള', url: 'https://ssfkerala.org/' },
-  { level: 'District', levelMl: 'ജില്ല', name: 'Kannur', nameMl: 'കണ്ണൂർ' },
-  { level: 'Division', levelMl: 'ഡിവിഷൻ', name: 'Thalassery', nameMl: 'തലശ്ശേരി' },
-  { level: 'Sector', levelMl: 'സെക്ടർ', name: 'Dharmadam', nameMl: 'ധർമ്മടം' },
-  { level: 'Unit', levelMl: 'യൂണിറ്റ്', name: 'Nettur', nameMl: 'നെട്ടൂർ', current: true },
+  { tier: 'NATIONAL', name: 'SSF India', url: 'https://www.nationalssf.org/' },
+  { tier: 'STATE', name: 'SSF Kerala', url: 'https://ssfkerala.org/' },
+  { tier: 'DISTRICT', name: 'Kannur' },
+  { tier: 'DIVISION', name: 'Thalassery' },
+  { tier: 'SECTOR', name: 'Dharmadam' },
+  { tier: 'UNIT', name: 'Nettur', current: true },
 ];
 
-export const intro = {
-  ml: 'നെട്ടൂരിലെ വിദ്യാർഥികൾ ഒന്നിച്ചിരിക്കുന്ന ഇടം. പഠനവും ആത്മീയതയും സർഗാത്മകതയും സേവനവും ചേർത്തുപിടിച്ച്, എസ് എസ് എഫിന്റെ ആശയങ്ങളെ നാട്ടിലെ ജീവിതമാക്കുകയാണ് യൂണിറ്റിന്റെ ലക്ഷ്യം.',
-  en: "SSF Nettur is the Sunni Students' Federation unit for the students of Nettur, Thalassery. We are part of Dharmadam Sector, Thalassery Division and Kannur District.",
-};
-
-// Federation-wide figures, with their source. Update when nationalssf.org changes them.
+// Federation figures, with their source. Replace with unit figures when you have them.
 export const stats = {
-  source: 'nationalssf.org',
-  sourceUrl: 'https://www.nationalssf.org/',
-  checked: 'November 2026',
+  note: 'Federation figures from nationalssf.org, checked November 2026.',
   items: [
     { value: '1973', label: 'SSF founded' },
-    { value: '~10 lakh', label: 'Members across India' },
+    { value: '~10L', label: 'Members across India' },
     { value: '26', label: 'States' },
     { value: '6,370', label: 'Units in Kerala' },
   ],
 };
 
-// icon: any lucide-react icon name used in src/components/AreaIcon.jsx
-export const areas = [
-  { id: 'faith', icon: 'BookOpen', ml: 'ആത്മീയം', en: 'Faith', textMl: 'വിശ്വാസവും ജീവിതവും ചേർത്തുവെക്കുന്ന പഠന സദസ്സുകൾ.', textEn: 'Study gatherings that join belief with daily life.' },
-  { id: 'culture', icon: 'Feather', ml: 'സാംസ്കാരികം', en: 'Sahityotsav', textMl: 'യൂണിറ്റ് സാഹിത്യോത്സവ് മുതൽ മേൽഘടകങ്ങൾ വരെ സർഗശേഷിക്ക് വേദി.', textEn: 'A stage for talent, from the unit Sahityotsav up to sector and division rounds.' },
-  { id: 'education', icon: 'GraduationCap', ml: 'വിദ്യാഭ്യാസം', en: 'Education', textMl: 'പഠനത്തിലും കരിയർ തിരഞ്ഞെടുപ്പിലും വഴികാട്ടൽ.', textEn: 'Guidance on studies and career choices.' },
-  { id: 'reading', icon: 'Newspaper', ml: 'വായന', en: 'Risala', textMl: 'രിസാല വാരികയിലൂടെ വായനയുടെ ശീലം.', textEn: 'Building a reading habit through Risala weekly.' },
-  { id: 'service', icon: 'HandHeart', ml: 'സേവനം', en: 'Service', textMl: 'നാടിന്റെ ആവശ്യങ്ങളിൽ ഒപ്പം നിൽക്കുന്ന പ്രവർത്തനങ്ങൾ.', textEn: 'Standing with Nettur when it needs help.' },
-];
-
-// Upcoming programmes. Past dates are hidden automatically.
-// Example: { date: '2026-12-06', time: '9:00 AM', titleMl: 'യൂണിറ്റ് സാഹിത്യോത്സവ്', title: 'Unit Sahityotsav', place: 'Nettur' }
-export const events = [];
-
-// Unit committee. The Committee page and menu link stay hidden while this is empty.
-// Example: { name: 'Full Name', role: 'President', photo: '/assets/team/president.webp' }
-export const committee = [];
-
+// 5. CONTACT
 export const social = {
   instagram: { handle: '@ssf_nettur', url: 'https://www.instagram.com/ssf_nettur' },
-  facebook: { label: 'SSF Nettur', url: 'https://www.facebook.com/share/19qNzpWRzc/' },
-  // Behold JSON feed for @ssf_nettur (https://feeds.behold.so/XXXX). Empty shows a link card instead of posts.
+  facebook: { handle: 'ssfnettur', url: 'https://www.facebook.com/ssfnettur' },
+  // WhatsApp number with country code, digits only, e.g. '919876543210'. Empty hides the button.
+  whatsapp: '',
+  // Behold JSON feed for @ssf_nettur (https://feeds.behold.so/XXXX). Adds live posts to the archive.
   instagramFeedUrl: '',
 };
 
-export const joinCopy = {
-  ml: 'എസ് എസ് എഫിൽ അംഗമാകാം',
-  en: 'Students of Nettur can join the unit. Message us on Instagram and a unit member will reply.',
-};
+// Formspree form ID (the part after formspree.io/f/). Empty keeps the form from sending.
+export const formspreeId = '';
+export const formPurposes = ['Join the unit', 'Risala subscription', 'Student help desk', 'Other'];

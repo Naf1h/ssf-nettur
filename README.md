@@ -4,14 +4,15 @@ React (Vite) + React Router + Tailwind CSS + Lucide. Deployed on Vercel: every p
 
 ## Update the content
 
-All text, events, committee and stats live in **`src/data/unitData.js`**. Edit that file only.
+Everything lives in **`src/data/unitData.js`**, in this order:
 
-- `events`: upcoming programmes. Past dates hide on their own. Empty shows an honest "no programmes announced" card.
-- `committee`: office bearers. The Committee page drops out of the menu while this is empty.
-- `social.instagramFeedUrl`: the Behold JSON feed URL for @ssf_nettur. Empty shows a link card instead of posts.
-- `stats`: federation figures, with their source. Never leave a dash or a guess here.
+1. `committee` / `secretariat`: office bearer names from the latest @ssf_nettur committee post. Empty names are simply not shown.
+2. `posters`: programmes and the archive. Put 4:5 Instagram posters in `public/posters/` and set `image`, `url`, `date` and `status` (`UPCOMING`, `ONGOING`, `COMPLETED`, `RECURRING`). `COMPLETED` posters move to the archive.
+3. `departments`: the six departments.
+4. `unit`, `hierarchy`, `stats`: unit facts and federation figures (with source).
+5. `social.whatsapp`, `formspreeId`: the WhatsApp button and the registration form switch on once these are set.
 
-Do not add placeholder text ("To be updated", "Lorem ipsum", sample titles). Leave a list empty instead.
+Script rule: English for UI, tags, dates and summaries. Malayalam only in `titleMl` fields. Never mix both in one paragraph.
 
 ## Develop
 
@@ -22,7 +23,6 @@ npm run dev
 
 Before pushing, check every page at 390px and 1440px wide.
 
-## Assets
+## Type
 
-- `public/assets/jeevithamavuka.webp`, `flag.webp`, `crowd.webp`, `procession.webp`: SSF Kerala's 2026 ജീവിതമാവുക campaign artwork.
-- `src/components/wordmarkPaths.js`: the "SSF" wordmark as outlines.
+Inter Tight (headings), Inter (body), JetBrains Mono (tags), Anek Malayalam (Malayalam titles), all from Google Fonts.

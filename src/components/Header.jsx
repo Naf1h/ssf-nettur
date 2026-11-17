@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import Wordmark from './Wordmark.jsx';
+import Brand from './Brand.jsx';
 import { navLinks } from './nav.js';
 
 export default function Header() {
@@ -18,27 +18,28 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-header border-b border-line bg-white pt-[env(safe-area-inset-top)]">
+      <div className="stripes h-1" aria-hidden="true" />
       <div className="page flex h-16 items-center justify-between gap-6">
-        <Link to="/" aria-label="SSF Nettur, home"><Wordmark /></Link>
+        <Link to="/" aria-label="SSF Nettur Unit, home"><Brand /></Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Main" className="hidden items-stretch self-stretch lg:flex">
           {navLinks.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               className={({ isActive }) =>
-                `relative py-2 text-sm font-medium transition-colors ${isActive ? 'text-ink after:absolute after:inset-x-0 after:-bottom-[13px] after:h-0.5 after:bg-brand-blue' : 'text-ink-muted hover:text-ink'}`
+                `flex items-center border-l border-line px-5 text-sm font-medium last:border-r ${isActive ? 'bg-alt text-ink shadow-[inset_0_-2px_0_#0F4C81]' : 'text-ink-muted hover:text-ink'}`
               }
             >
               {l.label}
             </NavLink>
           ))}
-          <Link to="/contact" className="btn-dark min-h-[40px] px-4">Join the unit</Link>
+          <Link to="/join" className="btn-navy my-auto ml-5 min-h-[40px]">Become a member</Link>
         </nav>
 
         <button
           type="button"
-          className="grid size-11 place-items-center rounded-lg border border-line md:hidden"
+          className="grid size-11 place-items-center border border-line lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -49,15 +50,14 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-menu" aria-label="Main" className="fixed inset-x-0 bottom-0 top-[calc(4rem+env(safe-area-inset-top))] z-menu overflow-auto border-t border-line bg-white md:hidden">
-          <div className="page flex flex-col py-4">
-            <NavLink to="/" end className="border-b border-line py-4 text-2xl font-bold tracking-tight">Home</NavLink>
-            {navLinks.map((l) => (
-              <NavLink key={l.to} to={l.to} className={({ isActive }) => `border-b border-line py-4 text-2xl font-bold tracking-tight ${isActive ? 'text-brand-blue' : ''}`}>
-                {l.label}
+        <nav id="mobile-menu" aria-label="Main" className="fixed inset-x-0 bottom-0 top-[calc(4.25rem+env(safe-area-inset-top))] z-menu overflow-auto border-t border-line bg-white lg:hidden">
+          <div className="page flex flex-col py-2">
+            {[{ to: '/', label: 'Home' }, ...navLinks].map((l, i) => (
+              <NavLink key={l.to} to={l.to} end={l.to === '/'} className={({ isActive }) => `flex items-baseline gap-4 border-b border-line py-5 font-head text-2xl font-extrabold tracking-[-0.02em] ${isActive ? 'text-brand-blue' : ''}`}>
+                <span className="tag text-ink-muted">0{i + 1}</span>{l.label}
               </NavLink>
             ))}
-            <Link to="/contact" className="btn-dark mt-6 justify-center">Join the unit</Link>
+            <Link to="/join" className="btn-navy mt-6 justify-center">Become a member</Link>
           </div>
         </nav>
       )}
