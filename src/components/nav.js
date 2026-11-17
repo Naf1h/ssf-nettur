@@ -1,6 +1,8 @@
 export const navLinks = [
-  { to: '/about', label: 'About' },
-  { to: '/departments', label: 'Departments' },
-  { to: '/programmes', label: 'Programmes' },
-  { to: '/join', label: 'Join & Help Desk' },
+  { id: 'top', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'work', label: 'Initiatives' },
+  { id: 'events', label: 'Programmes' },
+  { id: 'leadership', label: 'Leadership' },
+  { id: 'contact', label: 'Contact' },
 ];
