@@ -11,6 +11,8 @@ export const committee = [
   { role: 'General Secretary', duty: 'Runs unit activities and keeps its records.', name: '', photo: '' },
   { role: 'Finance Secretary', duty: 'Keeps the unit accounts and membership dues.', name: '', photo: '' },
 ];
+// Term of the current office bearers, as on the announcement post.
+export const committeeTerm = '2027-28';
 // Instagram post announcing the current office bearers.
 export const committeePost = 'https://www.instagram.com/p/DeqdfUHpozV/';
 // Secretariat members and wing convenors, e.g. { role: 'Convenor, WEFI', name: 'Full Name' }
@@ -155,6 +157,8 @@ export const social = {
   instagramFeedUrl: '',
 };
 
-// Formspree form ID (the part after formspree.io/f/). Empty keeps the form from sending.
+// Form delivery: submissions are emailed to unit.email through FormSubmit (no account needed).
+// The first submission sends an activation email to that inbox; click Activate once.
+// Optional: a Formspree form ID (the part after formspree.io/f/) takes priority if set.
 export const formspreeId = '';
 export const formPurposes = ['Join the unit', 'Risala subscription', 'Student help desk', 'Other'];

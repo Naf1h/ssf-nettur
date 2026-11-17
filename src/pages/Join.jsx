@@ -19,11 +19,19 @@ function HelpForm() {
     if (!/^\+?[0-9 ]{10,15}$/.test(String(data.get('whatsapp') || '').trim())) next.whatsapp = 'Enter a WhatsApp number with 10 to 15 digits.';
     setErrors(next);
     if (Object.keys(next).length) { form.querySelector(`[name="${Object.keys(next)[0]}"]`)?.focus(); return; }
-    if (!formspreeId) { setState('offline'); return; }
+    // Formspree if an ID is set; otherwise FormSubmit, which emails the unit address directly.
+    const endpoint = formspreeId
+      ? `https://formspree.io/f/${formspreeId}`
+      : unit.email ? `https://formsubmit.co/ajax/${unit.email}` : '';
+    if (!endpoint) { setState('offline'); return; }
+    data.set('_subject', `SSF Nettur website: ${data.get('purpose')} from ${String(data.get('name')).trim()}`);
+    data.set('_template', 'table');
+    data.set('_captcha', 'false');
     setState('sending');
     try {
-      const r = await fetch(`https://formspree.io/f/${formspreeId}`, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (!r.ok) throw new Error();
+      const r = await fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+      const body = await r.json().catch(() => ({}));
+      if (!r.ok || String(body.success) === 'false') throw new Error();
       setState('sent');
       form.reset();
     } catch {
@@ -63,7 +71,7 @@ function HelpForm() {
       <label className="text-sm font-semibold" htmlFor="f-msg">Message
         <textarea id="f-msg" name="message" rows={4} className={`${field} py-3`} />
       </label>
-      <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
+      <input type="text" name="_honey" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div className="flex flex-wrap items-center gap-4">
         <button type="submit" className="btn-navy" disabled={state === 'sending'}>{state === 'sending' ? 'Sending…' : 'Send registration'}</button>
         <span className="text-xs text-ink-muted">Used only to contact you about the unit.</span>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { unit } from '../data/unitData.js';
+import { unit, committeeTerm } from '../data/unitData.js';
 import { PageIntro, SectionHead, HierarchyStrip, CommitteeGrid, JoinBand } from '../components/ui.jsx';
 import usePageTitle from '../components/usePageTitle.js';
 
@@ -50,7 +50,9 @@ export default function About() {
       </section>
 
       <section id="committee" aria-labelledby="committee-title" className="page scroll-mt-24 py-16 md:py-24">
-        <SectionHead tag="03 // EXECUTIVE COMMITTEE" title="Unit executive committee" id="committee-title" />
+        <SectionHead tag={`03 // EXECUTIVE COMMITTEE ${committeeTerm}`} title="Unit executive committee" id="committee-title">
+          <p>Office bearers for {committeeTerm}.</p>
+        </SectionHead>
         <div className="mt-10"><CommitteeGrid /></div>
       </section>
 
