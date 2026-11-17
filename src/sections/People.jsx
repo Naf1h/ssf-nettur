@@ -23,8 +23,8 @@ export default function People() {
           <li key={m.role} className="grid items-center gap-x-6 gap-y-2 border-b border-black/[0.06] py-7 sm:grid-cols-12 sm:py-9">
             <p className="idx sm:col-span-3">{m.role}</p>
             <div className="flex items-center gap-5 sm:col-span-9">
-              {m.photo && <img src={m.photo} alt="" width="72" height="72" loading="lazy" className="size-14 shrink-0 rounded-full object-cover object-top ring-1 ring-black/[0.06] sm:size-[72px]" />}
-              <p className="text-[2rem] font-bold leading-[1.05] tracking-[-0.04em] sm:text-5xl">{m.name}</p>
+              {m.photo && <img src={m.photo} alt={`${m.name}, ${m.role}`} width="96" height="96" loading="lazy" className="size-16 shrink-0 rounded-full bg-[#43AFA6] object-cover object-top ring-1 ring-black/[0.06] sm:size-24" />}
+              <p className="min-w-0 text-[1.75rem] font-bold leading-[1.05] tracking-[-0.04em] [text-wrap:balance] sm:text-5xl">{m.name}</p>
             </div>
           </li>
         ))}

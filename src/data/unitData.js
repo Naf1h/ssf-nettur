@@ -81,9 +81,9 @@ export const events = [
 export const committeeTerm = '2027-28';
 export const committeePost = 'https://www.instagram.com/p/DeqdfUHpozV/';
 export const committee = [
-  { role: 'President', name: 'Muhammed Sahal M', photo: '' },
-  { role: 'General Secretary', name: 'Muhammed Fardeen A', photo: '' },
-  { role: 'Executive Secretary', name: 'Muhammed Mubashir V.U', photo: '' },
+  { role: 'President', name: 'Muhammed Sahal M', photo: '/team/president.webp' },
+  { role: 'General Secretary', name: 'Muhammed Fardeen A', photo: '/team/general-secretary.webp' },
+  { role: 'Executive Secretary', name: 'Muhammed Mubashir V.U', photo: '/team/executive-secretary.webp' },
 ];
 // The rest of the committee, names only, grouped as on the announcement post.
 export const memberGroups = [
