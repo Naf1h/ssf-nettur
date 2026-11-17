@@ -67,44 +67,103 @@ export function StatsGrid() {
   );
 }
 
-const statusStyle = {
-  UPCOMING: 'bg-brand-green text-white',
-  ONGOING: 'bg-white text-navy',
-  RECURRING: 'bg-white/10 text-white ring-1 ring-inset ring-white/25',
-  COMPLETED: 'bg-black/60 text-white',
-};
-
 function formatDate(d) {
   return new Intl.DateTimeFormat('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }).format(new Date(d)).toUpperCase();
 }
 
-export function Poster({ p, large = false }) {
-  const href = p.url || social.instagram.url;
-  const when = p.date ? formatDate(p.date) : p.when?.toUpperCase();
+// Date "ticket": irregular polygon panel over a hard offset panel, with an off-register hairline.
+// Shape language from the 2026 SSF asset sheet, recoloured in SSF blue and green.
+const TICKET = '10,14 312,2 304,92 262,98 256,146 4,140 18,74';
+export function Ticket({ top, big, sub, size = 'md' }) {
+  const sm = size === 'sm';
   return (
-    <article className="group relative flex aspect-[4/5] flex-col overflow-hidden bg-navy text-white">
+    <div className={`relative ${sm ? 'w-[200px]' : 'w-[min(100%,280px)]'}`}>
+      <svg viewBox="0 0 320 150" className="block h-auto w-full overflow-visible" aria-hidden="true" focusable="false">
+        <polygon points={TICKET} fill="#16A34A" transform="translate(8 10)" />
+        <polygon points={TICKET} fill="#0F4C81" />
+        <polygon points={TICKET} fill="none" stroke="#FFFFFF" strokeWidth="1.5" transform="translate(-7 -7)" />
+      </svg>
+      <div className={`absolute inset-0 flex flex-col justify-center ${sm ? 'pl-5 pr-8' : 'pl-7 pr-10'} leading-none text-white`}>
+        {top && <span className={`font-head font-semibold ${sm ? 'text-[11px]' : 'text-sm'} text-white/80`}>{top}</span>}
+        <span className={`mt-1 font-head font-extrabold tracking-[-0.02em] text-[#86EFAC] ${sm ? 'text-xl' : 'text-[2rem]'}`}>{big}</span>
+        {sub && <span className={`mt-1.5 font-head font-bold ${sm ? 'text-[11px]' : 'text-sm'}`}>{sub}</span>}
+      </div>
+    </div>
+  );
+}
+
+function ticketFor(p) {
+  if (p.date) {
+    const d = new Date(p.date);
+    return {
+      top: new Intl.DateTimeFormat('en-IN', { month: 'long', year: 'numeric' }).format(d),
+      big: String(d.getDate()).padStart(2, '0'),
+      sub: p.place || 'Nettur',
+    };
+  }
+  if (p.status === 'ONGOING') return { top: 'Campaign', big: p.when, sub: 'Nettur Unit' };
+  return { top: 'Unit programme', big: p.when, sub: 'Nettur' };
+}
+
+// Boxed handle chip, as in the asset sheet's social chips.
+export function HandleChip({ href, label = social.instagram.handle, solid = false }) {
+  return (
+    <a
+      href={href || social.instagram.url}
+      target="_blank"
+      rel="noopener"
+      className={`inline-flex min-h-[40px] items-center gap-2 px-3 text-sm font-semibold transition-transform duration-150 ease-out hover:-translate-x-0.5 hover:-translate-y-0.5 ${solid ? 'bg-brand-blue text-white shadow-[4px_4px_0_#16A34A]' : 'border border-current'}`}
+    >
+      <Instagram className="size-4" aria-hidden="true" />{label}<ArrowUpRight className="size-3.5" aria-hidden="true" />
+    </a>
+  );
+}
+
+const statusChip = {
+  UPCOMING: 'bg-brand-green text-white shadow-[3px_3px_0_#FFFFFF]',
+  ONGOING: 'bg-white text-navy shadow-[3px_3px_0_#16A34A]',
+  RECURRING: 'border border-white/60 text-white',
+  COMPLETED: 'bg-black/70 text-white',
+};
+
+export function Poster({ p, large = false }) {
+  const t = ticketFor(p);
+  const linkLabel = p.url ? 'Open post on @ssf_nettur' : '@ssf_nettur';
+  return (
+    <article className="relative flex aspect-[4/5] flex-col bg-navy text-white">
       {p.image ? (
         <img src={p.image} alt={p.titleMl} loading="lazy" className="absolute inset-0 size-full object-cover" />
       ) : (
         <div className="absolute inset-0" aria-hidden="true">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.06)_1px,transparent_1px)] bg-[size:25%_20%]" />
-          <div className="stripes-v absolute bottom-0 right-0 top-0 w-3" />
+          <div className="stripes-v absolute bottom-0 right-0 top-0 w-2.5" />
         </div>
       )}
       <div className="relative flex items-start justify-between gap-3 p-5">
         <span className="tag text-white/70">{p.tag}</span>
-        <span className={`tag shrink-0 px-2 py-1 ${statusStyle[p.status] || statusStyle.RECURRING}`}>{p.status}</span>
+        <span className={`tag shrink-0 px-2 py-1 ${statusChip[p.status] || statusChip.RECURRING}`}>{p.status}</span>
       </div>
-      <div className={`relative mt-auto p-5 pr-8 ${p.image ? 'bg-gradient-to-t from-navy via-navy/90 to-transparent pt-16' : ''}`}>
-        <h3 className={`ml-title ${large ? 'text-4xl sm:text-5xl' : 'text-[28px]'} font-bold`} lang="ml">{p.titleMl}</h3>
-        {p.summary && <p className="mt-3 text-sm text-white/70">{p.summary}</p>}
-        <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-white/15 pt-4">
-          {when && <span className="tag text-white/60">{when}</span>}
-          <a href={href} target="_blank" rel="noopener" className="inline-flex items-center gap-1.5 text-sm font-semibold text-white underline-offset-4 hover:underline">
-            {p.url ? 'Open post on @ssf_nettur' : 'Follow on @ssf_nettur'}<ArrowUpRight className="size-4" aria-hidden="true" />
-          </a>
+
+      {p.image ? (
+        <div className="relative mt-auto bg-gradient-to-t from-navy via-navy/90 to-transparent p-5 pt-20">
+          <h3 lang="ml" className="ml-title text-[26px] font-bold">{p.titleMl}</h3>
+          <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
+            {p.date && <span className="tag text-white/70">{formatDate(p.date)}</span>}
+            <HandleChip href={p.url} label={linkLabel} />
+          </div>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="relative px-5 pr-8 pt-2">
+            <h3 lang="ml" className={`ml-title font-bold [text-shadow:3px_3px_0_#16A34A] ${large ? 'text-[2.1rem] sm:text-5xl lg:text-6xl' : 'text-[1.75rem] sm:text-[2rem]'}`}>{p.titleMl}</h3>
+            {p.summary && <p className="mt-3 max-w-sm text-sm text-white/70">{p.summary}</p>}
+          </div>
+          <div className="relative mt-auto flex flex-wrap items-end justify-between gap-x-4 gap-y-5 p-5 pr-7">
+            <Ticket {...t} size={large ? 'md' : 'sm'} />
+            <HandleChip href={p.url} label={linkLabel} />
+          </div>
+        </>
+      )}
     </article>
   );
 }
@@ -128,7 +187,7 @@ export function FeaturedPosters() {
           <article key={p.id} className="flex flex-col gap-4 bg-white p-6 md:p-8">
             <div className="flex items-start justify-between gap-3">
               <span className="tag text-brand-blue">{p.tag}</span>
-              <span className="tag border border-line px-2 py-1 text-ink-muted">{p.status}</span>
+              <span className="tag border border-ink px-2 py-1 shadow-[3px_3px_0_#16A34A]">{p.when || p.status}</span>
             </div>
             <h3 lang="ml" className="ml-title text-3xl font-bold">{p.titleMl}</h3>
             <p className="text-sm text-ink-muted">{p.summary}</p>
@@ -151,12 +210,15 @@ export function DepartmentBento({ compact = false }) {
         return (
           <li key={d.id} className={`flex flex-col gap-5 p-6 md:p-8 ${bento[i]} ${big ? 'bg-navy text-white' : 'bg-white'}`}>
             <div className="flex items-start justify-between gap-4">
-              <span className={`tag ${big ? 'text-white/60' : 'text-brand-blue'}`}>{d.tag}</span>
+              <span className="flex items-center gap-3">
+                <span className={`grid size-8 shrink-0 place-items-center font-mono text-xs font-medium ${big ? 'bg-white text-navy shadow-[3px_3px_0_#16A34A]' : 'border border-ink shadow-[3px_3px_0_#0F4C81]'}`}>0{i + 1}</span>
+                <span className={`tag ${big ? 'text-white/60' : 'text-brand-blue'}`}>{d.tag}</span>
+              </span>
               <Icon className={`size-6 shrink-0 ${big ? 'text-brand-green' : 'text-ink'}`} strokeWidth={1.6} aria-hidden="true" />
             </div>
             <div className={big ? 'mt-auto' : ''}>
-              <h3 lang="ml" className={`ml-title font-bold ${big ? 'text-5xl sm:text-6xl' : 'text-3xl'}`}>{d.titleMl}</h3>
-              <p className={`mt-1 font-head text-base font-bold tracking-[-0.01em] ${big ? 'text-white/80' : 'text-ink'}`}>{d.title}</p>
+              <h3 lang="ml" className={`ml-title font-bold ${big ? 'text-5xl [text-shadow:3px_3px_0_#16A34A] sm:text-6xl' : 'text-3xl'}`}>{d.titleMl}</h3>
+              <p className={`mt-3 font-head text-[11px] font-semibold uppercase tracking-[0.38em] ${big ? 'text-white/70' : 'text-ink-muted'}`}>{d.title}</p>
             </div>
             {!compact && <p className={`text-sm ${big ? 'text-white/70' : 'text-ink-muted'}`}>{d.summary}</p>}
             {big && <span className="stripes h-1 w-24" aria-hidden="true" />}
