@@ -96,7 +96,7 @@ export function Poster({ p, large = false }) {
         <span className={`tag shrink-0 px-2 py-1 ${statusStyle[p.status] || statusStyle.RECURRING}`}>{p.status}</span>
       </div>
       <div className={`relative mt-auto p-5 pr-8 ${p.image ? 'bg-gradient-to-t from-navy via-navy/90 to-transparent pt-16' : ''}`}>
-        <h3 className={`ml-title ${large ? 'text-4xl sm:text-5xl' : 'text-[28px]'} font-extrabold`} lang="ml">{p.titleMl}</h3>
+        <h3 className={`ml-title ${large ? 'text-4xl sm:text-5xl' : 'text-[28px]'} font-bold`} lang="ml">{p.titleMl}</h3>
         {p.summary && <p className="mt-3 text-sm text-white/70">{p.summary}</p>}
         <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-white/15 pt-4">
           {when && <span className="tag text-white/60">{when}</span>}
@@ -130,7 +130,7 @@ export function FeaturedPosters() {
               <span className="tag text-brand-blue">{p.tag}</span>
               <span className="tag border border-line px-2 py-1 text-ink-muted">{p.status}</span>
             </div>
-            <h3 lang="ml" className="ml-title text-3xl font-extrabold">{p.titleMl}</h3>
+            <h3 lang="ml" className="ml-title text-3xl font-bold">{p.titleMl}</h3>
             <p className="text-sm text-ink-muted">{p.summary}</p>
             <Link to="/programmes" className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:underline">All programmes<ArrowRight className="size-4" aria-hidden="true" /></Link>
           </article>
@@ -155,7 +155,7 @@ export function DepartmentBento({ compact = false }) {
               <Icon className={`size-6 shrink-0 ${big ? 'text-brand-green' : 'text-ink'}`} strokeWidth={1.6} aria-hidden="true" />
             </div>
             <div className={big ? 'mt-auto' : ''}>
-              <h3 lang="ml" className={`ml-title font-extrabold ${big ? 'text-5xl sm:text-6xl' : 'text-3xl'}`}>{d.titleMl}</h3>
+              <h3 lang="ml" className={`ml-title font-bold ${big ? 'text-5xl sm:text-6xl' : 'text-3xl'}`}>{d.titleMl}</h3>
               <p className={`mt-1 font-head text-base font-bold tracking-[-0.01em] ${big ? 'text-white/80' : 'text-ink'}`}>{d.title}</p>
             </div>
             {!compact && <p className={`text-sm ${big ? 'text-white/70' : 'text-ink-muted'}`}>{d.summary}</p>}
