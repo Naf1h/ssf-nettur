@@ -46,6 +46,10 @@ export default function Pulse() {
   const stageRef = useRef(null);
   if (!active) return null;
   // On one-column layouts the poster sits above the list, so bring it into view after a tap.
+  // Hover previews only when the poster sits beside the list and a mouse is present.
+  const preview = (id) => {
+    if (window.matchMedia('(hover: hover) and (min-width: 1024px)').matches) setActiveId(id);
+  };
   const pick = (id) => {
     setActiveId(id);
     if (window.matchMedia('(max-width: 1023px)').matches) stageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -71,8 +75,8 @@ export default function Pulse() {
                   type="button"
                   aria-pressed={on}
                   onClick={() => pick(e.id)}
-                  onMouseEnter={() => setActiveId(e.id)}
-                  onFocus={() => setActiveId(e.id)}
+                  onMouseEnter={() => preview(e.id)}
+                  onFocus={() => preview(e.id)}
                   className="grid w-full grid-cols-[44px_1fr] gap-x-2 py-8 pl-5 pr-2 text-left"
                 >
                   <span className="idx pt-1">0{i + 1}</span>
