@@ -39,8 +39,8 @@ export const wings = [
   { id: 'sahityotsav', title: 'Sahityotsav & Culture', text: 'Grassroots literary and art festivals nurturing student talent from Nettur Unit to Sector, Division, and District stages.', rhythm: 'Annual', focus: 'Unit round to national stage' },
   { id: 'wefi', title: 'WEFI Education', text: 'Career consulting, SSLC, Plus Two and university admission guidance, and academic mentorship for Nettur students.', rhythm: 'Year-round', focus: 'SSLC, Plus Two, university' },
   { id: 'risala', title: 'Risala Reading', text: 'Promoting reading culture and weekly Risala circulation across homes in Nettur.', rhythm: 'Weekly issue', focus: 'Delivered to homes in Nettur' },
-  { id: 'smile', title: "Smile Children's Wing", text: 'Creative gatherings and moral learning sessions for school children.', rhythm: 'Regular gatherings', focus: 'School children' },
-  { id: 'smartcore', title: 'Smart Core', text: 'Sports meets, ideathons and other skill and team events run by the unit for its students.', rhythm: 'Through the year', focus: 'Sports, ideathons, team events' },
+  { id: 'smile', title: "Smile Children's Wing", text: 'The unit\'s children\'s wing. Stories, games and creative activities that help school children learn good values and feel at home in the unit.', rhythm: 'Regular gatherings', focus: 'School children' },
+  { id: 'smartcore', title: 'Smart Core', text: 'The unit\'s skills and events wing. Sports meets, ideathons and team challenges that build fitness, fresh thinking and teamwork among Nettur\'s students.', rhythm: 'Through the year', focus: 'Sports, ideathons, team challenges' },
   { id: 'spiritual', title: 'Spiritual Study', text: 'Weekly study circles, moral character building, and prophetic values.', rhythm: 'Weekly circle', focus: 'Character and values' },
   { id: 'service', title: 'Social Service', text: 'Volunteer relief drives, environmental sanitation, and community care in Nettur.', rhythm: 'When Nettur needs it', focus: 'Relief, sanitation, care' },
 ];
