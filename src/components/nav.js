@@ -1,6 +1,7 @@
 export const navLinks = [
-  { id: 'index', label: 'Index' },
-  { id: 'pulse', label: 'Pulse' },
+  { id: 'events', label: 'Programmes' },
   { id: 'wings', label: 'Wings' },
-  { id: 'lineage', label: 'Lineage' },
+  { id: 'about', label: 'About' },
+  { id: 'committee', label: 'Committee' },
+  { id: 'connect', label: 'Connect' },
 ];

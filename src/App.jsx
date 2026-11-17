@@ -5,14 +5,14 @@ import NotFound from './pages/NotFound.jsx';
 
 // Older multi-page addresses now point to sections of the single page.
 const redirects = {
-  about: 'lineage',
+  about: 'about',
   departments: 'wings',
-  programmes: 'pulse',
-  events: 'pulse',
-  updates: 'pulse',
-  committee: 'people',
-  join: 'write',
-  contact: 'write',
+  programmes: 'events',
+  events: 'events',
+  updates: 'events',
+  committee: 'committee',
+  join: 'connect',
+  contact: 'connect',
 }
 
 export default function App() {

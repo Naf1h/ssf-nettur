@@ -1,21 +1,20 @@
-/** Precision minimalism: SSF Nettur design tokens. */
+/** SSF Nettur dark festival system. */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        alabaster: '#FAF9F6',
-        obsidian: '#090D16',
-        ink: { DEFAULT: '#0B1220', muted: '#5B6472' },
-        flag: { blue: '#0EA5E9', green: '#10B981' },
+        night: { DEFAULT: '#080C14', 2: '#0B111E', 3: '#111827' },
+        glow: { emerald: '#10B981', cyan: '#22D3EE', teal: '#2DD4BF', gold: '#F5B544' },
       },
       fontFamily: {
-        sans: ['"Inter Tight"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        sans: ['Sora', 'system-ui', 'sans-serif'],
+        display: ['"Bricolage Grotesque"', 'Sora', 'system-ui', 'sans-serif'],
+        ml: ['"Anek Malayalam"', 'Sora', 'sans-serif'],
       },
-      maxWidth: { frame: '1320px' },
-      zIndex: { dock: '50', skip: '60' },
+      maxWidth: { frame: '1280px' },
+      zIndex: { header: '50', menu: '55', skip: '60' },
     },
   },
   plugins: [],

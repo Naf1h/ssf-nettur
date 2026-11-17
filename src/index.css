@@ -3,26 +3,41 @@
 @tailwind utilities;
 
 @layer base {
-  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 104px; }
-  body { @apply bg-alabaster font-sans text-ink antialiased; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; background: #080C14; }
+  body { @apply bg-night font-sans text-white/90 antialiased; }
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
-  ::selection { background: #0B1220; color: #FAF9F6; }
-  :focus-visible { outline: 2px solid #0EA5E9; outline-offset: 3px; border-radius: 6px; }
+  ::selection { background: #10B981; color: #080C14; }
+  :focus-visible { outline: 2px solid #22D3EE; outline-offset: 3px; border-radius: 8px; }
+  [lang='ml'] { font-family: 'Anek Malayalam', Sora, sans-serif; font-variation-settings: 'wdth' 95; line-height: 1.4; }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 }
 
 @layer components {
-  .frame { @apply mx-auto w-full max-w-frame px-6 sm:px-10; }
-  .hair { @apply border-black/[0.06]; }
-  .idx { @apply font-mono text-[11px] font-medium tabular-nums text-ink-muted; }
-  .h-section { @apply text-[2.6rem] font-bold leading-[0.98] tracking-[-0.04em] sm:text-6xl; }
-  /* Signature 3px tri-colour bar: SSF flag colours. */
-  .tricolor { height: 3px; background: linear-gradient(90deg, #0EA5E9 0 33.333%, #FFFFFF 33.333% 66.666%, #10B981 66.666%); }
-  .tricolor-light { box-shadow: 0 0 0 1px rgb(0 0 0 / 0.06); }
+  .frame { @apply mx-auto w-full max-w-frame px-5 sm:px-8; }
+  /* Dark glass surface used for every card. */
+  .glass { @apply rounded-[24px] border border-white/[0.08] bg-white/[0.03]; }
+  .tag { @apply text-[11px] font-semibold uppercase tracking-[0.12em]; }
+  .h-sec { @apply font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem]; }
+  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-colors duration-200; }
+  .btn-emerald { @apply btn bg-glow-emerald text-night hover:bg-emerald-400; }
+  .btn-glass { @apply btn border border-white/15 bg-white/[0.04] text-white backdrop-blur hover:border-white/30 hover:bg-white/[0.08]; }
+  .link-arrow { @apply inline-flex items-center gap-1.5 text-sm font-semibold text-white/80 transition-colors hover:text-white; }
+  /* Hover glow for glass cards: a soft light that follows the card edge. */
+  .glow-card { @apply relative overflow-hidden transition-[border-color,background-color] duration-300 hover:border-white/[0.16] hover:bg-white/[0.045]; }
+  .glow-card::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; opacity: 0; transition: opacity .35s; pointer-events: none;
+    background: radial-gradient(420px circle at 15% 0%, rgba(16,185,129,.16), transparent 60%); }
+  .glow-card:hover::before { opacity: 1; }
+  .grid-lines { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 64px 64px; }
 }
 
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 48s linear infinite; }
+.marquee-track.reverse { animation-direction: reverse; animation-duration: 60s; }
 @keyframes ping-soft { 75%, 100% { transform: scale(2.4); opacity: 0; } }
 .dot-live { position: relative; }
 .dot-live::after { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: inherit; animation: ping-soft 1.8s cubic-bezier(0, 0, 0.2, 1) infinite; }
-@media (prefers-reduced-motion: reduce) { .dot-live::after { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .dot-live::after { animation: none !important; }
+  *, *::before, *::after { transition: none !important; }
+}

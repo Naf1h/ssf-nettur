@@ -12,22 +12,24 @@ export const unit = {
   address: 'Thwaiba Garden, Nettur, Thalassery, Kannur Dt, 670105',
   email: 'ssfnettur121@gmail.com',
   coords: '11.75° N, 75.49° E',
-  theme: { year: 2026, name: 'Jeevithamavuka', meaning: 'Live the Message' },
+  theme: { year: 2026, name: 'Jeevithamavuka', ml: 'ജീവിതമാവുക', meaning: 'Live the Message' },
+  nameMl: 'എസ് എസ് എഫ് നെട്ടൂർ യൂണിറ്റ്',
+  region: 'Nettur, Thalassery, Kannur District, Kerala',
+  introMl: 'നെട്ടൂരിലെ വിദ്യാർഥികൾ ഒന്നിച്ചിരിക്കുന്ന ഇടം. പഠനവും ആത്മീയതയും സർഗാത്മകതയും സേവനവും ചേർത്തുപിടിച്ച്, എസ് എസ് എഫിന്റെ ആശയങ്ങളെ നാട്ടിലെ ജീവിതമാക്കുകയാണ് യൂണിറ്റിന്റെ ലക്ഷ്യം.',
+  intro: "A place for the students of Nettur to come together. Through study, faith, creativity and service, the unit carries SSF's ideas into everyday life in Nettur.",
 };
 
 // SSF India down to this unit.
 export const lineage = [
-  { name: 'SSF India', short: 'SSF India', role: 'National federation, with units across 26 states.', url: 'https://www.nationalssf.org/' },
-  { name: 'SSF Kerala', short: 'Kerala', role: 'State committee for every SSF unit in Kerala.', url: 'https://ssfkerala.org/' },
-  { name: 'Kannur District', short: 'Kannur', role: 'District committee. Runs the Kannur District Sahityotsav.', url: 'https://www.ssfkannur.in/' },
-  { name: 'Thalassery Division', short: 'Thalassery', role: 'Division committee for the sectors around Thalassery.' },
-  { name: 'Dharmadam Sector', short: 'Dharmadam', role: 'Sector committee for Nettur and neighbouring units. Holds the Students Council.' },
-  { name: 'Nettur Unit', short: 'Nettur Unit', role: 'Our unit. Study circles, Sahityotsav, Risala, Smile, Smart Core and service in Nettur.', current: true },
+  { name: 'SSF India', tier: 'National', role: 'The national federation, with units across 26 states.', url: 'https://www.nationalssf.org/', link: 'nationalssf.org' },
+  { name: 'SSF Kerala', tier: 'State', role: 'State committee for every SSF unit in Kerala.', url: 'https://ssfkerala.org/', link: 'ssfkerala.org' },
+  { name: 'Kannur District', tier: 'District', role: 'District committee. Runs the Kannur District Sahityotsav.', url: 'https://www.ssfkannur.in/', link: 'ssfkannur.in' },
+  { name: 'Thalassery Division', tier: 'Division', role: 'Division committee for the sectors around Thalassery.', url: 'https://www.instagram.com/ssf_thalassery_division', link: '@ssf_thalassery_division' },
+  { name: 'Dharmadam Sector', tier: 'Sector', role: 'Sector committee for Nettur and neighbouring units. Holds the Students Council.', anchor: 'events', link: 'See the Sector Council' },
+  { name: 'Nettur Unit', tier: 'Unit', role: 'Our unit, for the students of Nettur.', url: 'https://www.instagram.com/ssf_nettur', link: '@ssf_nettur', current: true },
 ]
 
-
-
-// Sahityotsav stages above the unit, linked from the Sahityotsav card.
+// Sahityotsav stages above the unit, linked from the Sahityotsav wing.
 export const sahityotsavLinks = [
   { stage: 'District', name: 'Kannur District Sahityotsav', url: 'https://sahityotsav.ssfkannur.in/' },
   { stage: 'State', name: 'Kerala Sahityotsav', url: 'https://keralasahityotsav.com' },
@@ -36,14 +38,14 @@ export const sahityotsavLinks = [
 
 // THE WINGS. rhythm and focus are the short facts shown when a wing opens.
 export const wings = [
-  { id: 'sahityotsav', title: 'Sahityotsav & Culture', text: 'Grassroots literary and art festivals nurturing student talent from Nettur Unit to Sector, Division, and District stages.', rhythm: 'Annual', focus: 'Unit round to national stage' },
-  { id: 'wefi', title: 'WEFI Education', text: 'Career consulting, SSLC, Plus Two and university admission guidance, and academic mentorship for Nettur students.', rhythm: 'Year-round', focus: 'SSLC, Plus Two, university' },
-  { id: 'risala', title: 'Risala Reading', text: 'Promoting reading culture and weekly Risala circulation across homes in Nettur.', rhythm: 'Weekly issue', focus: 'Delivered to homes in Nettur' },
-  { id: 'smile', title: "Smile Children's Wing", text: 'The unit\'s children\'s wing. Stories, games and creative activities that help school children learn good values and feel at home in the unit.', rhythm: 'Regular gatherings', focus: 'School children' },
-  { id: 'smartcore', title: 'Smart Core', text: 'The unit\'s skills and events wing. Sports meets, ideathons and team challenges that build fitness, fresh thinking and teamwork among Nettur\'s students.', rhythm: 'Through the year', focus: 'Sports, ideathons, team challenges' },
-  { id: 'spiritual', title: 'Spiritual Study', text: 'Weekly study circles, moral character building, and prophetic values.', rhythm: 'Weekly circle', focus: 'Character and values' },
-  { id: 'service', title: 'Social Service', text: 'Volunteer relief drives, environmental sanitation, and community care in Nettur.', rhythm: 'When Nettur needs it', focus: 'Relief, sanitation, care' },
-];
+  { id: 'smartcore', tag: 'Youth & Sports', title: 'Smart Core', ml: 'സ്മാർട്ട് കോർ', text: "The unit's action hub for sports meets, turf tournaments, ideathons, quizzes and skill challenges in Nettur." },
+  { id: 'smile', tag: "Children's Wing", title: 'Smile', ml: 'സ്മൈൽ', text: 'Nurturing school children in Nettur through moral learning, creative clubs and student gatherings.' },
+  { id: 'sahityotsav', tag: 'Culture & Arts', title: 'Sahityotsav', ml: 'സാഹിത്യോത്സവ്', text: 'A grassroots literary and art festival, from Family and Unit Sahityotsav up to Sector, Division, District and National stages.', links: true },
+  { id: 'wefi', tag: 'Education & Career', title: 'WEFI', ml: 'വിദ്യാഭ്യാസം', text: 'Academic mentoring, an SSLC, Plus Two and university admission help desk, and scholarship guidance.' },
+  { id: 'campus', tag: 'Students Hub', title: 'Campus Wing', ml: 'ക്യാമ്പസ്', text: 'Connecting high school, higher secondary and professional college students from Nettur.' },
+  { id: 'risala', tag: 'Publications', title: 'Risala & Reading', ml: 'വായന • രിസാല', text: 'Cultivating reading habits, weekly study circles and Risala Weekly circulation across Nettur homes.' },
+  { id: 'dawa', tag: 'Spiritual & Welfare', title: "Da'wa & Service", ml: 'ആത്മീയം • സേവനം', text: 'Weekly spiritual study circles, environmental care and volunteer community relief in Nettur.' },
+]
 
 // EVENTS: copied from the posters. tier: 'unit' or 'sector'.
 // Past dates move to "Recent highlights" on their own.
@@ -51,6 +53,7 @@ export const events = [
   {
     id: 'bafaqi-anusmarana-2026',
     tier: 'unit',
+    titleMl: 'അമീനുശ്ശരീഅ സയ്യിദ് അലി ബാഫഖി തങ്ങൾ അനുസ്മരണ സംഗമം',
     title: 'Ameenu Shareea Sayyid Ali Bafaqi Thangal Memorial Gathering',
     type: 'Anusmarana Sangamam',
     organizer: 'Organized by SSF Nettur Unit',
@@ -100,10 +103,10 @@ export const memberGroups = [
 export const social = {
   instagram: { handle: '@ssf_nettur', url: 'https://www.instagram.com/ssf_nettur' },
   facebook: { handle: 'ssfnettur', url: 'https://www.facebook.com/ssfnettur' },
+  thalassery: { handle: '@ssf_thalassery_division', url: 'https://www.instagram.com/ssf_thalassery_division' },
+  // Opens a direct message to @ssf_nettur.
+  dm: 'https://ig.me/m/ssf_nettur',
   // WhatsApp number with country code, digits only, e.g. '919876543210'. Empty hides the button.
   whatsapp: '',
 };
 
-// Form: submissions are emailed to unit.email through FormSubmit (no account needed).
-// The first submission sends an activation email to that inbox; click "Activate Form" once.
-export const formPurposes = ['Join the unit', 'Risala subscription', 'Student help desk', 'Other'];

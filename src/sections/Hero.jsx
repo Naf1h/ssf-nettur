@@ -1,59 +1,66 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import { unit } from '../data/unitData.js';
+import LineageStrip from './LineageStrip.jsx';
 
-const lines = [['Shaping', 'minds.'], ['Strengthening', 'Nettur.']];
 const ease = [0.22, 1, 0.36, 1];
-
-// The page's one orchestrated moment: the headline rises word by word.
-const word = {
-  hidden: { y: '108%' },
-  show: (i) => ({ y: '0%', transition: { duration: 0.9, ease, delay: 0.15 + i * 0.09 } }),
-};
+const rise = { hidden: { opacity: 0, y: 18 }, show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, ease, delay: 0.1 + i * 0.08 } }) };
 
 export default function Hero() {
-  let n = 0;
   return (
-    <section id="index" aria-labelledby="hero-title" className="frame pt-32 sm:pt-44">
-      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-black/[0.06] pb-5 font-mono text-[11px] uppercase tracking-[0.08em]">
-        <span className="flex items-center gap-2.5 text-ink">
-          <span className="dot-live size-1.5 rounded-full bg-flag-green shadow-[0_0_10px_#10B981]" aria-hidden="true" />
-          Active unit — Nettur, Thalassery
-        </span>
-        <span className="text-ink-muted">{unit.theme.year} campaign: {unit.theme.name}</span>
+    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden pb-20 pt-[calc(76px+3.5rem)] sm:pt-[calc(76px+5rem)]">
+      {/* Atmosphere: glows and architectural grid lines */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute -left-40 -top-24 size-[560px] rounded-full bg-glow-emerald/20 blur-[120px]" />
+        <div className="absolute -right-32 top-24 size-[520px] rounded-full bg-glow-gold/15 blur-[130px]" />
+        <div className="absolute bottom-[-220px] left-1/3 size-[520px] rounded-full bg-glow-teal/15 blur-[130px]" />
+        <div className="grid-lines absolute inset-0 [mask-image:radial-gradient(ellipse_at_30%_20%,#000_20%,transparent_75%)]" />
       </div>
 
-      <h1 id="hero-title" aria-label="Shaping minds. Strengthening Nettur." className="mt-14 text-[clamp(3.1rem,11.6vw,11.25rem)] font-extrabold leading-[0.86] tracking-[-0.055em] sm:mt-20">
-        <motion.span initial="hidden" animate="show" className="block" aria-hidden="true">
-          {lines.map((line) => (
-            <span key={line.join(' ')} className="block">
-              {line.map((w) => {
-                const i = n++;
-                return (
-                  <span key={w} className="mr-[0.16em] inline-block overflow-hidden pb-[0.07em] align-top last:mr-0">
-                    <motion.span custom={i} variants={word} className="inline-block">{w}</motion.span>
-                  </span>
-                );
-              })}
-            </span>
-          ))}
-        </motion.span>
-      </h1>
+      <div className="frame relative">
+        <div className="grid items-center gap-14 lg:grid-cols-12">
+          <motion.div initial="hidden" animate="show" className="lg:col-span-7">
+            <motion.p variants={rise} custom={0} className="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-white/75 backdrop-blur">
+              <span className="size-1.5 rounded-full bg-glow-gold shadow-[0_0_10px_#F5B544]" aria-hidden="true" />
+              <span className="tracking-[0.1em]">{unit.theme.year} CAMPAIGN •</span>
+              <span lang="ml" className="text-sm font-bold text-white">{unit.theme.ml}</span>
+              <span className="text-white/55">({unit.theme.meaning})</span>
+            </motion.p>
+            <motion.p variants={rise} custom={1} lang="ml" className="mt-8 text-xl font-bold text-glow-emerald sm:text-2xl">{unit.nameMl}</motion.p>
+            <motion.h1 variants={rise} custom={2} id="hero-title" className="mt-1 font-display text-[clamp(2.9rem,7.4vw,6.4rem)] font-extrabold leading-[0.95] tracking-[-0.04em] text-white">
+              Empowering Minds.<br />Strengthening Nettur.
+            </motion.h1>
+            <motion.p variants={rise} custom={3} className="mt-7 max-w-xl text-lg leading-relaxed text-white/60">
+              The Sunni Students' Federation unit for the students of Nettur, under Dharmadam Sector and Thalassery Division, Kannur District.
+            </motion.p>
+            <motion.div variants={rise} custom={4} className="mt-9 flex flex-wrap gap-3">
+              <Link to="/#events" className="btn-emerald">Explore Programmes<ArrowRight className="size-4" aria-hidden="true" /></Link>
+              <Link to="/#wings" className="btn-glass">Our 7 Wings<ArrowDown className="size-4" aria-hidden="true" /></Link>
+            </motion.div>
+          </motion.div>
 
-      <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-12">
-        <div className="md:col-span-5">
-          <div className="tricolor tricolor-light w-14 rounded-full" aria-hidden="true" />
-          <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-muted">
-            The Sunni Students' Federation unit for the students of Nettur. Study circles, Sahityotsav, career guidance and service, under Dharmadam Sector and Thalassery Division.
-          </p>
+          {/* Glass prism: layered panes around the emblem and campaign word */}
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.9, ease, delay: 0.25 }}
+            className="relative mx-auto w-full max-w-[440px] lg:col-span-5 lg:mr-0"
+          >
+            <div className="absolute inset-0 rotate-[7deg] rounded-[32px] border border-white/[0.06] bg-gradient-to-br from-glow-gold/10 to-transparent" aria-hidden="true" />
+            <div className="absolute inset-0 -rotate-[4deg] rounded-[32px] border border-white/[0.06] bg-gradient-to-tr from-glow-teal/10 to-transparent" aria-hidden="true" />
+            <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.05] p-8 text-center backdrop-blur-xl sm:p-10">
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" aria-hidden="true" />
+              <div className="mx-auto grid size-40 place-items-center rounded-full bg-white shadow-[0_0_80px_rgba(16,185,129,.35)] sm:size-48">
+                <img src="/assets/ssf-emblem.png" alt="SSF emblem" width="180" height="180" className="size-[62%] object-contain" />
+              </div>
+              <p lang="ml" className="mt-8 text-[2.6rem] font-extrabold text-white sm:text-5xl">{unit.theme.ml}</p>
+              <p className="mt-1 text-sm font-medium tracking-[0.08em] text-white/55">LIVE THE MESSAGE</p>
+            </div>
+          </motion.div>
         </div>
-        <div className="flex flex-col items-start gap-6 md:col-span-5 md:col-start-8 md:items-end md:justify-end">
-          <div className="flex flex-wrap items-center gap-5">
-            <Link to="/#pulse" className="rounded-full bg-obsidian px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-black">See what's on</Link>
-            <Link to="/#write" className="text-sm font-semibold text-ink underline decoration-black/20 underline-offset-[6px] transition-colors hover:decoration-ink">Write to the unit</Link>
-          </div>
-          <p className="idx">{unit.coords}</p>
-        </div>
+
+        <LineageStrip />
       </div>
     </section>
   );
