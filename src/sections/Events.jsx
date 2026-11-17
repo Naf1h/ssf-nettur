@@ -1,6 +1,8 @@
 import { useMemo, useRef, useState } from 'react';
 import { CalendarDays, Clock, MapPin, Users, Instagram, ArrowUpRight, Maximize2, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { events, social } from '../data/unitData.js';
+import { staggerContainer, scaleInCard, inView, hoverLift } from '../lib/motion.js';
 
 const tierBadge = {
   unit: { label: 'UNIT PROGRAMME • SSF NETTUR', cls: 'bg-emerald-ssf/10 text-green-ssf ring-emerald-ssf/25', dot: 'bg-emerald-ssf' },
@@ -49,7 +51,7 @@ function EventCard({ e, past }) {
   ];
 
   return (
-    <article className="card grid overflow-hidden md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+    <motion.article variants={scaleInCard} whileHover={hoverLift} className="card-motion grid overflow-hidden md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
       <button type="button" onClick={open} aria-label={`Open full poster: ${e.title}`} className="group relative block aspect-[4/5] overflow-hidden bg-alabaster">
         <img src={e.image} alt="" aria-hidden="true" className="absolute inset-0 size-full scale-110 object-cover opacity-60 blur-2xl" />
         <img src={e.image} alt="" loading="lazy" className="relative mx-auto h-full w-auto max-w-full object-contain p-5 drop-shadow-[0_20px_30px_rgb(0_0_0/0.18)] transition-transform duration-300 group-hover:scale-[1.02]" />
@@ -83,7 +85,7 @@ function EventCard({ e, past }) {
         </a>
       </div>
       {mounted && <Lightbox e={e} dialogRef={dialogRef} />}
-    </article>
+    </motion.article>
   );
 }
 
@@ -125,16 +127,16 @@ export default function Events() {
               type="button"
               aria-pressed={filter === f.id}
               onClick={() => setFilter(f.id)}
-              className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 ${filter === f.id ? 'bg-navy text-white shadow-soft' : 'border border-slate-200/80 bg-white text-ink-muted hover:text-navy'}`}
+              className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors duration-200 ${filter === f.id ? 'bg-navy text-white shadow-soft' : 'border border-slate-200/80 bg-white text-ink-muted hover:text-navy'}`}
             >
               {f.label}
             </button>
           ))}
         </div>
 
-        <div className="mt-8 grid gap-6" aria-live="polite">
+        <motion.div key={filter} variants={staggerContainer} {...inView} className="mt-8 grid gap-6" aria-live="polite">
           {shown.map((e) => <EventCard key={e.id} e={e} past={e.past} />)}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

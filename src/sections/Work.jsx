@@ -1,5 +1,7 @@
 import { Feather, GraduationCap, BookOpen, Newspaper, Sparkles, HandHeart } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { work } from '../data/unitData.js';
+import { staggerContainer, scaleInCard, inView, hoverLift } from '../lib/motion.js';
 
 const icons = { Feather, GraduationCap, BookOpen, Newspaper, Sparkles, HandHeart };
 
@@ -16,12 +18,12 @@ export default function Work() {
         </p>
       </div>
 
-      <ul className="mt-14 grid gap-5 md:grid-cols-12">
+      <motion.ul variants={staggerContainer} {...inView} className="mt-14 grid gap-5 md:grid-cols-12">
         {work.map((w, i) => {
           const Icon = icons[w.icon] || Sparkles;
           const wide = i < 2;
           return (
-            <li key={w.id} className={`card relative flex flex-col overflow-hidden p-8 ${wide ? 'md:col-span-6 md:min-h-[300px]' : 'md:col-span-6 lg:col-span-3'}`}>
+            <motion.li key={w.id} variants={scaleInCard} whileHover={hoverLift} className={`card-motion relative flex flex-col overflow-hidden p-8 ${wide ? 'md:col-span-6 md:min-h-[300px]' : 'md:col-span-6 lg:col-span-3'}`}>
               {wide && <div className={`glow -right-16 -top-16 size-56 opacity-10 ${i === 0 ? 'bg-emerald-ssf' : 'bg-blue-ssf'}`} aria-hidden="true" />}
               <div className="relative flex items-start justify-between">
                 <span className={`grid size-12 place-items-center rounded-2xl ${i % 2 ? 'bg-blue-ssf/10 text-blue-ssf' : 'bg-emerald-ssf/10 text-green-ssf'}`}>
@@ -31,10 +33,10 @@ export default function Work() {
               </div>
               <h3 className={`relative mt-auto pt-10 font-extrabold tracking-[-0.03em] text-navy ${wide ? 'text-3xl' : 'text-xl'}`}>{w.title}</h3>
               <p className={`relative mt-3 leading-relaxed text-ink-muted ${wide ? 'max-w-md text-base' : 'text-sm'}`}>{w.text}</p>
-            </li>
+            </motion.li>
           );
         })}
-      </ul>
+      </motion.ul>
     </section>
   );
 }

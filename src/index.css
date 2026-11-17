@@ -19,6 +19,8 @@
   .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.18em] text-green-ssf; }
   .h2 { @apply text-4xl font-extrabold leading-[1.05] tracking-[-0.04em] text-navy sm:text-5xl; }
   .card { @apply rounded-3xl border border-slate-200/80 bg-white shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-lift; }
+  /* For Framer Motion cards: shadow only, the lift comes from whileHover. */
+  .card-motion { @apply rounded-3xl border border-slate-200/80 bg-white shadow-soft transition-shadow duration-300 hover:shadow-lift; }
   .pill { @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold; }
   .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-all duration-200; }
   .btn-primary { @apply btn bg-blue-ssf text-white shadow-[0_10px_24px_rgb(15_76_129/0.22)] hover:-translate-y-0.5 hover:bg-blue-deep; }
