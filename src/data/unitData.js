@@ -18,7 +18,7 @@ export const unit = {
 export const lineage = [
   { name: 'SSF India', url: 'https://www.nationalssf.org/' },
   { name: 'SSF Kerala', url: 'https://ssfkerala.org/' },
-  { name: 'Kannur' },
+  { name: 'Kannur', url: 'https://www.ssfkannur.in/' },
   { name: 'Thalassery' },
   { name: 'Dharmadam' },
   { name: 'Nettur Unit', current: true },
@@ -29,6 +29,20 @@ export const overview = [
   { value: '06', label: 'Active unit wings', note: 'Campus, WEFI, Sahityotsav, Risala, Mazhavil, Service' },
   { value: 'Dharmadam', label: 'Sector jurisdiction', note: 'Under Thalassery Division, Kannur' },
   { value: '100%', label: 'Student & volunteer driven', note: 'Community impact led by students' },
+];
+
+// Official SSF sites linked from this site.
+export const network = [
+  { name: 'SSF India', url: 'https://www.nationalssf.org/' },
+  { name: 'SSF Kerala', url: 'https://ssfkerala.org/' },
+  { name: 'SSF Kannur District', url: 'https://www.ssfkannur.in/' },
+];
+
+// Sahityotsav stages above the unit, linked from the Sahityotsav card.
+export const sahityotsavLinks = [
+  { stage: 'District', name: 'Kannur District Sahityotsav', url: 'https://sahityotsav.ssfkannur.in/' },
+  { stage: 'State', name: 'Kerala Sahityotsav', url: 'https://keralasahityotsav.com' },
+  { stage: 'National', name: 'National Sahityotsav', url: 'https://sahityotsav.nationalssf.org/' },
 ];
 
 // "What we do": first two are the wide feature cards.
@@ -83,12 +97,21 @@ export const values = [
 export const committeeTerm = '2027-28';
 export const committeePost = 'https://www.instagram.com/p/DeqdfUHpozV/';
 export const committee = [
-  { role: 'President', name: '', photo: '' },
-  { role: 'General Secretary', name: '', photo: '' },
-  { role: 'Executive Secretary', name: '', photo: '' },
+  { role: 'President', name: 'Muhammed Sahal M', photo: '' },
+  { role: 'General Secretary', name: 'Muhammed Fardeen A', photo: '' },
+  { role: 'Executive Secretary', name: 'Muhammed Mubashir V.U', photo: '' },
 ];
-// Other committee members: names only, e.g. { role: 'Secretary', name: 'Full Name' }
-export const members = [];
+// The rest of the committee, names only, grouped as on the announcement post.
+export const memberGroups = [
+  {
+    title: 'Secretaries',
+    names: ['Muhammed Zayan P.K', 'Muhammed Misbah N.P', 'Muhammed Quais B.C', 'Abdul Hadhi Sajeer', 'Yamin Shameer', 'Najad Bin Naseer'],
+  },
+  {
+    title: 'Secretariat Members',
+    names: ['Muhammed Hamdan M', 'Muhammed Nashwan'],
+  },
+];
 
 export const social = {
   instagram: { handle: '@ssf_nettur', url: 'https://www.instagram.com/ssf_nettur' },

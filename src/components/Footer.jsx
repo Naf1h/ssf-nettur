@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Mail, MapPin } from 'lucide-react';
 import Logo from './Logo.jsx';
 import { navLinks } from './nav.js';
-import { lineage, social, unit } from '../data/unitData.js';
+import { network, sahityotsavLinks, social, unit } from '../data/unitData.js';
 
 export default function Footer() {
   return (
@@ -30,7 +30,12 @@ export default function Footer() {
             <li className="flex gap-3"><MapPin className="mt-0.5 size-4 shrink-0" aria-hidden="true" /><span>{unit.address}</span></li>
             <li className="flex gap-3"><Mail className="mt-0.5 size-4 shrink-0" aria-hidden="true" /><a className="break-all hover:text-white" href={`mailto:${unit.email}`}>{unit.email}</a></li>
           </ul>
-          <p className="mt-6 text-xs leading-relaxed text-white/45">{lineage.map((l) => l.name).join(' → ')}</p>
+          <p className="mb-3 mt-8 text-xs font-bold uppercase tracking-[0.16em] text-white/45">SSF network</p>
+          <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            {[...network, ...sahityotsavLinks.map((l) => ({ name: l.name, url: l.url }))].map((l) => (
+              <li key={l.name}><a href={l.url} target="_blank" rel="noopener" className="inline-block py-1 text-white/75 hover:text-white">{l.name}</a></li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="border-t border-white/10">

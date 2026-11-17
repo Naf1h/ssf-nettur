@@ -1,6 +1,6 @@
-import { Feather, GraduationCap, BookOpen, Newspaper, Sparkles, HandHeart } from 'lucide-react';
+import { Feather, GraduationCap, BookOpen, Newspaper, Sparkles, HandHeart, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { work } from '../data/unitData.js';
+import { work, sahityotsavLinks } from '../data/unitData.js';
 import { staggerContainer, scaleInCard, inView, hoverLift } from '../lib/motion.js';
 
 const icons = { Feather, GraduationCap, BookOpen, Newspaper, Sparkles, HandHeart };
@@ -33,6 +33,17 @@ export default function Work() {
               </div>
               <h3 className={`relative mt-auto pt-10 font-extrabold tracking-[-0.03em] text-navy ${wide ? 'text-3xl' : 'text-xl'}`}>{w.title}</h3>
               <p className={`relative mt-3 leading-relaxed text-ink-muted ${wide ? 'max-w-md text-base' : 'text-sm'}`}>{w.text}</p>
+              {w.id === 'sahityotsav' && (
+                <ul className="relative mt-6 flex flex-wrap gap-2" aria-label="Sahityotsav stages">
+                  {sahityotsavLinks.map((l) => (
+                    <li key={l.stage}>
+                      <a href={l.url} target="_blank" rel="noopener" aria-label={`${l.name} (opens in a new tab)`} className="pill border border-slate-200/80 bg-white text-navy transition-colors duration-200 hover:border-emerald-ssf hover:text-green-ssf">
+                        {l.stage}<ArrowUpRight className="size-3.5" aria-hidden="true" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </motion.li>
           );
         })}

@@ -1,8 +1,18 @@
-import { Instagram, ArrowUpRight, UserRound } from 'lucide-react';
-import { committee, members, committeeTerm, committeePost, social } from '../data/unitData.js';
+import { motion } from 'framer-motion';
+import { Instagram, ArrowUpRight } from 'lucide-react';
+import { committee, memberGroups, committeeTerm, committeePost, social } from '../data/unitData.js';
+import { staggerContainer, scaleInCard, fadeUpItem, inView, hoverLift } from '../lib/motion.js';
+
+function initials(name) {
+  // Skip the shared first name so initials tell people apart (e.g. Sahal M -> SM).
+  const words = name.split(/\s+/).filter((w) => /^[A-Za-z]/.test(w) && !/^(muhammed|mohammed|muhammad)$/i.test(w));
+  return words.slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+}
 
 export default function Leadership() {
   const named = committee.filter((m) => m.name);
+  const allPhotos = named.length > 0 && named.every((m) => m.photo);
+
   return (
     <section id="leadership" aria-labelledby="leadership-title" className="border-t border-slate-200/70 bg-alabaster">
       <div className="section">
@@ -11,49 +21,51 @@ export default function Leadership() {
             <p className="eyebrow">Leadership {committeeTerm}</p>
             <h2 id="leadership-title" className="h2 mt-4">Unit office bearers</h2>
           </div>
-          <p className="text-lg leading-relaxed text-ink-muted md:col-span-5">The executive committee leading SSF Nettur Unit for {committeeTerm}.</p>
+          <div className="md:col-span-5">
+            <p className="text-lg leading-relaxed text-ink-muted">The committee leading SSF Nettur Unit for {committeeTerm}.</p>
+            {committeePost && (
+              <a href={committeePost} target="_blank" rel="noopener" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-ssf hover:underline">
+                <Instagram className="size-4" aria-hidden="true" />See the announcement on {social.instagram.handle}<ArrowUpRight className="size-3.5" aria-hidden="true" />
+              </a>
+            )}
+          </div>
         </div>
 
-        {named.length > 0 ? (
-          <>
-            <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {named.map((m) => (
-                <li key={m.role} className="card overflow-hidden">
-                  <div className="aspect-[4/5] bg-[radial-gradient(circle_at_30%_20%,rgba(15,76,129,.12),transparent_60%),radial-gradient(circle_at_80%_90%,rgba(16,185,129,.14),transparent_55%)]">
-                    {m.photo ? (
-                      <img src={m.photo} alt={m.name} loading="lazy" className="size-full object-cover" />
-                    ) : (
-                      <span className="grid size-full place-items-center text-slate-300"><UserRound className="size-20" strokeWidth={1.2} aria-hidden="true" /></span>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <p className="pill bg-emerald-ssf/10 px-3 py-1 text-green-ssf">{m.role}</p>
-                    <p className="mt-3 text-xl font-extrabold tracking-[-0.02em] text-navy">{m.name}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            {members.length > 0 && (
-              <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                {members.map((m) => (
-                  <li key={m.role + m.name} className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft">
-                    <p className="text-xs font-semibold text-ink-muted">{m.role}</p>
-                    <p className="mt-1 font-bold text-navy">{m.name}</p>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </>
-        ) : (
-          <div className="card mt-14 flex flex-col gap-6 p-8 md:flex-row md:items-center md:justify-between md:p-10">
-            <div>
-              <p className="text-xl font-extrabold tracking-[-0.02em] text-navy">Meet the {committeeTerm} office bearers</p>
-              <p className="mt-2 max-w-xl text-ink-muted">The President, General Secretary, Executive Secretary and the full committee were announced on {social.instagram.handle}.</p>
-            </div>
-            <a href={committeePost || social.instagram.url} target="_blank" rel="noopener" className="btn-primary shrink-0">
-              <Instagram className="size-4" aria-hidden="true" />View the announcement<ArrowUpRight className="size-4" aria-hidden="true" />
-            </a>
-          </div>
+        <motion.ul variants={staggerContainer} {...inView} className="mt-14 grid gap-5 sm:grid-cols-3">
+          {named.map((m) => (
+            <motion.li key={m.role} variants={scaleInCard} whileHover={hoverLift} className="card-motion overflow-hidden">
+              {allPhotos ? (
+                <div className="aspect-[4/5] bg-[#43AFA6]">
+                  <img src={m.photo} alt={m.name} loading="lazy" width="480" height="600" className="size-full object-cover object-top" />
+                </div>
+              ) : (
+                <div className="flex items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(15,76,129,.12),transparent_60%),radial-gradient(circle_at_80%_90%,rgba(16,185,129,.14),transparent_55%)] py-10">
+                  <span className="grid size-24 place-items-center rounded-full bg-white text-2xl font-extrabold tracking-[-0.02em] text-navy shadow-soft ring-1 ring-slate-200/80" aria-hidden="true">{initials(m.name)}</span>
+                </div>
+              )}
+              <div className="p-6">
+                <p className="pill bg-emerald-ssf/10 px-3 py-1 text-green-ssf">{m.role}</p>
+                <p className="mt-3 text-xl font-extrabold tracking-[-0.02em] text-navy">{m.name}</p>
+              </div>
+            </motion.li>
+          ))}
+        </motion.ul>
+
+        {memberGroups.length > 0 && (
+          <motion.div variants={staggerContainer} {...inView} className="mt-5 grid gap-5 lg:grid-cols-[2fr_1fr]">
+            {memberGroups.map((g) => (
+              <motion.div key={g.title} variants={fadeUpItem} className="rounded-3xl border border-slate-200/80 bg-white p-7 shadow-soft">
+                <p className="text-sm font-bold text-navy">{g.title}</p>
+                <ul className={`mt-4 grid gap-x-6 gap-y-3 ${g.names.length > 3 ? 'sm:grid-cols-2' : ''}`}>
+                  {g.names.map((n) => (
+                    <li key={n} className="flex items-center gap-3 text-ink">
+                      <span className="size-1.5 shrink-0 rounded-full bg-emerald-ssf" aria-hidden="true" />{n}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
         )}
       </div>
     </section>
