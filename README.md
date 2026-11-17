@@ -1,16 +1,28 @@
 # SSF Nettur Unit website
 
-Static site for SSF Nettur Unit (Dharmadam Sector, Thalassery Division, Kannur District). Deployed on Vercel; every push to `main` goes live.
+React (Vite) + React Router + Tailwind CSS + Lucide. Deployed on Vercel: every push to `main` goes live.
 
-## Updating content
+## Update the content
 
-Open `index.html` and edit the block at the top of the `<script>` near the end of the file:
+All text, events, committee and stats live in **`src/data/unitData.js`**. Edit that file only.
 
-- `INSTAGRAM_FEED_URL`: the Behold JSON feed URL for @ssf_nettur. Empty shows the Instagram card.
-- `EVENTS`: upcoming programmes, e.g. `{date:'2026-12-06', title:'യൂണിറ്റ് സാഹിത്യോത്സവ്', place:'Nettur', time:'9:00 AM'}`. Past dates hide on their own.
-- `COMMITTEE`: office bearers, e.g. `{name:'Name', role:'President', photo:'assets/team/president.webp'}`. The section stays hidden while empty.
+- `events`: upcoming programmes. Past dates hide on their own. Empty shows an honest "no programmes announced" card.
+- `committee`: office bearers. The Committee page drops out of the menu while this is empty.
+- `social.instagramFeedUrl`: the Behold JSON feed URL for @ssf_nettur. Empty shows a link card instead of posts.
+- `stats`: federation figures, with their source. Never leave a dash or a guess here.
+
+Do not add placeholder text ("To be updated", "Lorem ipsum", sample titles). Leave a list empty instead.
+
+## Develop
+
+```bash
+npm install
+npm run dev
+```
+
+Before pushing, check every page at 390px and 1440px wide.
 
 ## Assets
 
-- `assets/rachana-*.woff2`: RIT Rachana (SIL Open Font License), subset to Malayalam.
-- Hero artwork (`jeevithamavuka.webp`, `flag.webp`, `crowd.webp`, `procession.webp`): SSF Kerala's ജീവിതമാവുക campaign artwork.
+- `public/assets/jeevithamavuka.webp`, `flag.webp`, `crowd.webp`, `procession.webp`: SSF Kerala's 2026 ജീവിതമാവുക campaign artwork.
+- `src/components/wordmarkPaths.js`: the "SSF" wordmark as outlines.

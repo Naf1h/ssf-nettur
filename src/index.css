@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-surface text-ink font-sans antialiased; }
+  [lang='ml'] { @apply font-ml leading-relaxed; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid #0F4C81; outline-offset: 3px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer components {
+  .page { @apply mx-auto w-full max-w-page px-5 sm:px-8; }
+  .display { @apply font-extrabold tracking-[-0.035em] leading-[1.02]; }
+  .label { @apply text-xs font-semibold tracking-wide text-ink-muted; }
+  .btn { @apply inline-flex min-h-[44px] items-center gap-2 rounded-lg px-5 text-sm font-semibold transition-transform duration-150 ease-out active:scale-[.98]; }
+  .btn-dark { @apply btn bg-surface-dark text-white hover:bg-[#13294a]; }
+  .btn-blue { @apply btn bg-brand-blue text-white hover:bg-[#0c3f6b]; }
+  .btn-line { @apply btn border border-line bg-white text-ink hover:border-ink; }
+  .btn-light { @apply btn bg-white text-surface-dark hover:bg-surface-alt; }
+}
+
+/* Campaign hero: SSF Kerala's ജീവിതമാവുക artwork, rebuilt from its layers. */
+.hero-sky { background: linear-gradient(180deg, #d9e2ed 0%, #e7edf3 45%, #f3f6f8 75%, #fff 100%); }
+.hero-scene { position: relative; aspect-ratio: 1920 / 860; }
+.hero-scene img { position: absolute; pointer-events: none; user-select: none; height: auto; }
+.hero-proc { z-index: 2; left: 0; bottom: 0; width: 100%; }
+.hero-crowd { z-index: 1; right: -2%; bottom: 30%; width: 50%;
+  -webkit-mask-image: linear-gradient(#000 62%, transparent 96%); mask-image: linear-gradient(#000 62%, transparent 96%); }
+.hero-flag { z-index: 1; left: 31%; bottom: 44%; width: 12%; }
+.hero-scene::after { content: ''; position: absolute; inset: auto 0 0 0; height: 26%; z-index: 3; background: linear-gradient(transparent, #fff 90%); }
+@media (max-width: 900px) { .hero-scene { width: 170vw; margin-left: -35vw; } }
