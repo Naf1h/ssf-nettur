@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight, Building2, GraduationCap, Feather, Newspaper, Sparkles, HandHeart, Instagram } from 'lucide-react';
-import { hierarchy, stats, posters, departments, committee, secretariat, social } from '../data/unitData.js';
+import { hierarchy, stats, posters, departments, committee, secretariat, social, committeePost } from '../data/unitData.js';
 
 const icons = { Building2, GraduationCap, Feather, Newspaper, Sparkles, HandHeart };
 
@@ -268,7 +268,7 @@ export function CommitteeGrid() {
       {!committee.some((m) => m.name) && (
         <p className="mt-4 flex items-center gap-2 text-sm text-ink-muted">
           <Instagram className="size-4" aria-hidden="true" />
-          The current office bearers are announced on <a className="font-semibold text-ink underline underline-offset-2" href={social.instagram.url} target="_blank" rel="noopener">{social.instagram.handle}</a>.
+          The current office bearers are announced on <a className="font-semibold text-ink underline underline-offset-2" href={committeePost || social.instagram.url} target="_blank" rel="noopener">{committeePost ? `this ${social.instagram.handle} post` : social.instagram.handle}</a>.
         </p>
       )}
     </div>

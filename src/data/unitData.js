@@ -11,6 +11,8 @@ export const committee = [
   { role: 'General Secretary', duty: 'Runs unit activities and keeps its records.', name: '', photo: '' },
   { role: 'Finance Secretary', duty: 'Keeps the unit accounts and membership dues.', name: '', photo: '' },
 ];
+// Instagram post announcing the current office bearers.
+export const committeePost = 'https://www.instagram.com/p/DeqdfUHpozV/';
 // Secretariat members and wing convenors, e.g. { role: 'Convenor, WEFI', name: 'Full Name' }
 export const secretariat = [];
 
