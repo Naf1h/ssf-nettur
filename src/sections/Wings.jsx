@@ -1,58 +1,58 @@
-import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { wings, sahityotsavLinks } from '../data/unitData.js';
 
-// Asymmetric 12-column bento. Placement per wing, in order.
-const place = [
-  'lg:col-span-7 lg:row-span-2',
-  'lg:col-span-5',
-  'lg:col-span-5',
-  'lg:col-span-4',
-  'lg:col-span-4',
-  'lg:col-span-4',
-  'lg:col-span-12',
-];
+const place = ['lg:col-span-7 lg:row-span-2', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-4', 'lg:col-span-4', 'lg:col-span-4', 'lg:col-span-12'];
 const accents = ['text-glow-emerald', 'text-glow-gold', 'text-glow-cyan', 'text-glow-emerald', 'text-glow-teal', 'text-glow-gold', 'text-glow-cyan'];
 
-export default function Wings() {
+// Full bento grid for /wings.
+export function WingsGrid() {
   return (
-    <section id="wings" aria-labelledby="wings-title" className="relative">
-      <div className="pointer-events-none absolute -left-40 top-20 size-[460px] rounded-full bg-glow-emerald/10 blur-[130px]" aria-hidden="true" />
-      <div className="frame relative pt-28 sm:pt-36">
-        <div className="grid gap-5 md:grid-cols-12 md:items-end">
-          <div className="md:col-span-8">
-            <p className="tag text-glow-gold">Seven wings</p>
-            <h2 id="wings-title" className="h-sec mt-3">How the unit works</h2>
-          </div>
-          <p className="text-white/55 md:col-span-4">Every programme in Nettur runs through one of these seven wings.</p>
-        </div>
+    <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+      {wings.map((w, i) => {
+        const big = i === 0;
+        const wide = i === 6;
+        return (
+          <li key={w.id} id={w.id} className={`glass glow-card flex scroll-mt-28 flex-col p-6 sm:p-8 ${place[i]} ${big ? 'sm:col-span-2 lg:min-h-[440px]' : ''} ${wide ? 'sm:col-span-2 lg:flex-row lg:items-start lg:justify-between lg:gap-10' : ''}`}>
+            <div className={`${big ? 'flex flex-1 flex-col' : ''} ${wide ? 'lg:max-w-md' : ''}`}>
+              <p className={`tag ${accents[i]}`}>0{i + 1} // {w.tag}</p>
+              <h3 lang="ml" className={`font-extrabold text-white ${big ? 'mt-auto pt-14 text-5xl sm:text-6xl' : 'mt-5 text-3xl'}`}>{w.ml}</h3>
+              <p className={`mt-1 font-display font-bold tracking-[-0.02em] text-white/85 ${big ? 'text-2xl' : 'text-lg'}`}>{w.title}</p>
+              <p className={`mt-4 leading-relaxed text-white/60 ${big ? 'max-w-md text-base' : 'text-sm'}`}>{w.text}</p>
+            </div>
+            <div className={`mt-5 ${wide ? 'lg:mt-0 lg:max-w-lg' : ''}`}>
+              <ul className="flex flex-wrap gap-2" aria-label={`${w.title} activities`}>
+                {w.activities.map((a) => <li key={a} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[13px] text-white/75">{a}</li>)}
+              </ul>
+              {w.links && (
+                <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+                  {sahityotsavLinks.map((l) => (
+                    <a key={l.url} href={l.url} target="_blank" rel="noopener" className="link-arrow">{l.stage} Sahityotsav<ArrowUpRight className="size-3.5" aria-hidden="true" /></a>
+                  ))}
+                </p>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
-          {wings.map((w, i) => {
-            const big = i === 0;
-            const wide = i === 6;
-            return (
-              <li key={w.id} className={`glass glow-card flex flex-col p-6 sm:p-8 ${place[i]} ${big ? 'sm:col-span-2 lg:min-h-[420px]' : ''} ${wide ? 'sm:col-span-2 lg:flex-row lg:items-end lg:justify-between lg:gap-10' : ''}`}>
-                <p className={`tag ${accents[i]} ${wide ? 'lg:hidden' : ''}`}>0{i + 1} // {w.tag}</p>
-                <div className={`${big ? 'mt-auto pt-16' : ''} ${wide ? 'lg:max-w-xl' : ''}`}>
-                  {wide && <p className={`tag hidden lg:block ${accents[i]}`}>0{i + 1} // {w.tag}</p>}
-                  <h3 lang="ml" className={`mt-5 font-extrabold text-white ${big ? 'text-5xl sm:text-6xl' : 'text-3xl'}`}>{w.ml}</h3>
-                  <p className={`mt-1 font-display font-bold tracking-[-0.02em] text-white/85 ${big ? 'text-2xl' : 'text-lg'}`}>{w.title}</p>
-                </div>
-                <div className={`${big ? 'mt-5' : 'mt-4'} ${wide ? 'lg:mt-0 lg:max-w-md' : ''}`}>
-                  <p className={`leading-relaxed text-white/60 ${big ? 'max-w-md text-base' : 'text-sm'}`}>{w.text}</p>
-                  {w.links && (
-                    <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
-                      {sahityotsavLinks.map((l) => (
-                        <a key={l.url} href={l.url} target="_blank" rel="noopener" className="link-arrow">{l.stage}<ArrowUpRight className="size-3.5" aria-hidden="true" /></a>
-                      ))}
-                    </p>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </section>
+// Compact strip for the home page; each wing links to its card on /wings.
+export function WingsPreview() {
+  return (
+    <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+      {wings.map((w, i) => (
+        <li key={w.id}>
+          <Link to={`/wings#${w.id}`} className="glass glow-card flex h-full flex-col p-4">
+            <span className={`tag ${accents[i]}`}>0{i + 1}</span>
+            <span lang="ml" className="mt-3 block text-lg font-bold text-white">{w.ml}</span>
+            <span className="mt-0.5 block text-[13px] font-semibold text-white/60">{w.title}</span>
+            <ArrowRight className="mt-auto size-4 self-end pt-0 text-white/35" aria-hidden="true" />
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

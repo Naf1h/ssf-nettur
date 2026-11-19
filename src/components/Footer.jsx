@@ -12,11 +12,12 @@ export default function Footer() {
           <Lockup size="lg" />
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/55">{unit.region}</p>
           <p className="mt-1 max-w-sm text-sm leading-relaxed text-white/40">{unit.address}</p>
+          <a href={`mailto:${unit.email}`} className="mt-1 inline-block text-sm text-white/55 hover:text-white">{unit.email}</a>
         </div>
         <nav aria-label="Footer" className="md:col-span-2">
-          <p className="tag mb-4 text-white/40">Explore</p>
+          <p className="tag mb-4 text-white/40">Pages</p>
           <ul className="grid gap-1 text-sm">
-            {navLinks.map((l) => <li key={l.id}><Link to={`/#${l.id}`} className="inline-block py-1.5 text-white/70 hover:text-white">{l.label}</Link></li>)}
+            {navLinks.map((l) => <li key={l.to}><Link to={l.to} className="inline-block py-1.5 text-white/70 hover:text-white">{l.label}</Link></li>)}
           </ul>
         </nav>
         <div className="md:col-span-2">
@@ -24,7 +25,7 @@ export default function Footer() {
           <ul className="grid gap-1 text-sm">
             <li><a href={social.instagram.url} target="_blank" rel="noopener" className="inline-block py-1.5 text-white/70 hover:text-white">Instagram</a></li>
             <li><a href={social.facebook.url} target="_blank" rel="noopener" className="inline-block py-1.5 text-white/70 hover:text-white">Facebook</a></li>
-            <li><a href={`mailto:${unit.email}`} className="inline-block py-1.5 text-white/70 hover:text-white">Email</a></li>
+            <li><a href={social.thalassery.url} target="_blank" rel="noopener" className="inline-block py-1.5 text-white/70 hover:text-white">Thalassery Division</a></li>
           </ul>
         </div>
         <div className="md:col-span-3">

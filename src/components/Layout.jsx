@@ -6,12 +6,12 @@ import Footer from './Footer.jsx';
 export default function Layout() {
   const { pathname, hash } = useLocation();
 
+  // Scroll to the top on every route change (or to #anchor when one is given).
   useEffect(() => {
     if (hash) {
-      const id = hash.slice(1);
-      requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: 'start' }));
+      requestAnimationFrame(() => document.getElementById(hash.slice(1))?.scrollIntoView({ block: 'start' }));
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   }, [pathname, hash]);
 

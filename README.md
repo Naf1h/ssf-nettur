@@ -1,28 +1,16 @@
 # SSF Nettur Unit website
 
-React (Vite) + React Router + Tailwind CSS + Lucide. Deployed on Vercel: every push to `main` goes live.
+React (Vite) + React Router + Tailwind + Framer Motion. Six pages: `/`, `/about`, `/wings`, `/programmes`, `/gallery`, `/connect`. Deployed on Vercel: every push to `main` goes live.
 
 ## Update the content
 
-Everything lives in **`src/data/unitData.js`**, in this order:
+- **`src/data/unitData.js`**: unit details, lineage, wings, upcoming events (from posters), the current committee, social links, and the 2024–25 archive (brochure quotes, honours, past programmes, 2025–26 committee).
+- **`src/data/galleryData.js`**: one line per photo. Put the image in `public/photos/` and add a line.
+- Upcoming events move to the archive by themselves once their date has passed.
 
-1. `committee` / `secretariat`: office bearer names from the latest @ssf_nettur committee post. Empty names are simply not shown.
-2. `posters`: programmes and the archive. Put 4:5 Instagram posters in `public/posters/` and set `image`, `url`, `date` and `status` (`UPCOMING`, `ONGOING`, `COMPLETED`, `RECURRING`). `COMPLETED` posters move to the archive.
-3. `departments`: the six departments.
-4. `unit`, `hierarchy`, `stats`: unit facts and federation figures (with source).
-5. `social.whatsapp`, `formspreeId`: the WhatsApp button and the registration form switch on once these are set.
+## Rules
 
-Script rule: English for UI, tags, dates and summaries. Malayalam only in `titleMl` fields. Never mix both in one paragraph.
-
-## Develop
-
-```bash
-npm install
-npm run dev
-```
-
-Before pushing, check every page at 390px and 1440px wide.
-
-## Type
-
-Inter Tight (headings), Inter (body), JetBrains Mono (tags), Anek Malayalam (Malayalam titles), all from Google Fonts.
+- The 2025 brochure is archive only. Current data (2026 events, committee) comes from Instagram posts.
+- The children's wing is SMILE and the youth/sports wing is SMART CORE (the brochure's "Mazhavil" is the old name).
+- Never retype "SSF" as text in a logo: use the `SSFMark` outlines in `src/components/Wordmark.jsx`.
+- Check every page at 390px and 1440px before pushing: no sideways scrolling.

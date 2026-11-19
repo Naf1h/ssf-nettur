@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  /* Root overflow lock: glows and ribbons can never cause sideways scrolling. */
+  html, body, #root { overflow-x: clip; }
   html { -webkit-text-size-adjust: 100%; scroll-padding-top: 96px; background: #080C14; }
+  #root { min-height: 100dvh; display: flex; flex-direction: column; }
+  #root > main { flex: 1; }
   body { @apply bg-night font-sans text-white/90 antialiased; }
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
@@ -21,13 +25,19 @@
   .h-sec { @apply font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.5rem]; }
   .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition-colors duration-200; }
   .btn-emerald { @apply btn bg-glow-emerald text-night hover:bg-emerald-400; }
-  .btn-glass { @apply btn border border-white/15 bg-white/[0.04] text-white backdrop-blur hover:border-white/30 hover:bg-white/[0.08]; }
+  .btn-glass { @apply btn border border-white/15 bg-white/[0.04] text-white hover:border-white/30 hover:bg-white/[0.08]; }
   .link-arrow { @apply inline-flex items-center gap-1.5 text-sm font-semibold text-white/80 transition-colors hover:text-white; }
   /* Hover glow for glass cards: a soft light that follows the card edge. */
   .glow-card { @apply relative overflow-hidden transition-[border-color,background-color] duration-300 hover:border-white/[0.16] hover:bg-white/[0.045]; }
   .glow-card::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; opacity: 0; transition: opacity .35s; pointer-events: none;
     background: radial-gradient(420px circle at 15% 0%, rgba(16,185,129,.16), transparent 60%); }
   .glow-card:hover::before { opacity: 1; }
+  /* Ambient glows as plain gradients (no blur filters: cheap on phones). */
+  .aura { position: absolute; pointer-events: none; border-radius: 9999px; }
+  .aura-emerald { background: radial-gradient(closest-side, rgba(16,185,129,.22), transparent); }
+  .aura-gold { background: radial-gradient(closest-side, rgba(245,181,68,.16), transparent); }
+  .aura-teal { background: radial-gradient(closest-side, rgba(45,212,191,.15), transparent); }
+  .aura-cyan { background: radial-gradient(closest-side, rgba(34,211,238,.12), transparent); }
   .grid-lines { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 64px 64px; }
 }
 

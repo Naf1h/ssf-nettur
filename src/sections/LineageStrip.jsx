@@ -21,7 +21,7 @@ export default function LineageStrip() {
           return (
             <li key={l.name} className="flex items-center gap-1">
               {l.anchor ? (
-                <Link to={`/#${l.anchor}`} className={cls}>{inner}</Link>
+                <Link to={l.anchor} className={cls}>{inner}</Link>
               ) : (
                 <a href={l.url} target="_blank" rel="noopener" className={cls}>{inner}</a>
               )}
