@@ -26,8 +26,8 @@ export default function Header() {
 
   return (
     <>
-      {/* The navbar is the only element that uses backdrop blur. */}
-      <header className={`fixed inset-x-0 top-0 z-header pt-[env(safe-area-inset-top)] transition-colors duration-300 ${scrolled || open ? 'border-b border-white/[0.06] bg-night/85 backdrop-blur-xl' : ''}`}>
+      {/* Solid on phones; light blur only from 768px up. Nothing else on the site blurs. */}
+      <header className={`fixed inset-x-0 top-0 z-header pt-[env(safe-area-inset-top)] transition-colors duration-300 ${scrolled || open ? 'border-b border-white/[0.06] bg-[#080C14]/95 md:bg-[#080C14]/80 md:backdrop-blur-md' : ''}`}>
         <div className="frame flex h-[76px] items-center justify-between gap-6">
           <Link to="/" aria-label="SSF Nettur Unit, home"><Lockup /></Link>
 

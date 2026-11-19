@@ -90,8 +90,8 @@ export function Lightbox({ items, index, onClose }) {
 function PosterFrame({ e, onOpen }) {
   return (
     <button type="button" onClick={onOpen} aria-label={`Open full poster: ${e.title}`} className="group relative block aspect-[4/5] w-full overflow-hidden bg-night-3">
-      {/* Blurred backdrop only on larger screens: filters are costly on phones. */}
-      <img src={e.image} alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 hidden size-full scale-110 object-cover opacity-50 blur-2xl saturate-150 md:block" />
+      {/* Blurred backdrop only on desktop (1024px+): filters are costly on iPhone and iPad. */}
+      <img src={e.image} alt="" aria-hidden="true" loading="lazy" decoding="async" className="absolute inset-0 hidden size-full scale-110 object-cover opacity-50 blur-2xl saturate-150 lg:block" />
       <img src={e.image} alt="" loading="lazy" decoding="async" className="relative mx-auto size-full object-contain p-4 sm:p-5" />
       <span className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full bg-night/85 px-3 py-1.5 text-xs font-semibold text-white">
         <Maximize2 className="size-3.5" aria-hidden="true" />Full poster

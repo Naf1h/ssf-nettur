@@ -22,7 +22,7 @@ export default function Hero() {
 
       <div className="frame relative">
         <div className="grid items-center gap-14 lg:grid-cols-12">
-          <motion.div initial="hidden" animate="show" className="lg:col-span-7">
+          <motion.div initial={small ? false : 'hidden'} animate="show" className="lg:col-span-7">
             <motion.p variants={rise} custom={0} className="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-xs font-semibold text-white/75">
               <span className="size-1.5 rounded-full bg-glow-gold shadow-[0_0_10px_#F5B544]" aria-hidden="true" />
               <span className="tracking-[0.1em]">{unit.theme.year} CAMPAIGN •</span>
@@ -44,7 +44,7 @@ export default function Hero() {
 
           {/* Glass prism: layered panes around the emblem and campaign word */}
           <motion.div
-            initial={{ opacity: 0, y: small ? 12 : 24 }}
+            initial={small ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: small ? 0.3 : 0.9, ease, delay: small ? 0 : 0.25 }}
             className="relative mx-auto w-full max-w-[440px] lg:col-span-5 lg:mr-0"
